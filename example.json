@@ -1,0 +1,21 @@
+// Add to component JSON
+
+"_enhancedQuestion": {
+	"_isEnabled": true,
+	"_overidePartlyCorrect": {
+		"_isEnabled": true,
+		"_questionWeight": 0.5
+	},
+	"_feedbackIcons": {
+		"_isEnabled": true,
+		"_correctIcon": "adapt/css/assets/correct-icon.png",
+		"_partlyCorrectIcon": "adapt/css/assets/partlyCorrect-icon.png",
+		"_incorrectIcon": "adapt/css/assets/incorrect-icon.png"
+	},
+	"_inlineFeedback": {
+		"_isEnabled": true
+	},
+	"_hideFeedbackButton": {
+		"_isEnabled": true
+	}
+},

@@ -1,0 +1,137 @@
+{
+  "type":"object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://jsonschema.net",
+  "required":false,
+  "properties":{
+    "pluginLocations": {
+      "type":"object",
+      "required":true,
+      "properties":{
+        "config": {
+          "type":"object"
+        },
+        "course": {
+          "type":"object"
+        },
+        "contentobject": {
+          "type":"object"
+        },
+        "article": {
+          "type":"object"
+        },
+        "block": {
+          "type":"object"
+        },
+        "component": {
+          "type":"object",
+          "properties":{
+            "_enhancedQuestion": {
+              "type":"object",
+              "required":false,
+              "properties": {
+                "_isEnabled": {
+                  "type":"boolean",
+                  "required":true,
+                  "default": false,
+                  "title": "Enhanced question",
+                  "inputType": { "type": "Boolean", "options": [false, true]},
+                  "validators": []
+                },
+                "_overidePartlyCorrect": {
+                  "type":"object",
+                  "required":true,
+                  "title": "Overide partly correct score",
+                  "properties":{
+                    "_isEnabled": {
+                      "type":"boolean",
+                      "required":true,
+                      "default": false,
+                      "title": "Overide partly correct score",
+                      "inputType": { "type": "Boolean", "options": [false, true]},
+                      "validators": []
+                    },
+                    "_questionWeight": {
+                      "type":"number",
+                      "required":true,
+                      "default": 1,
+                      "title": "New question weight",
+                      "inputType":"Number",
+                      "validators": ["required", "number"]
+                    }
+                  }
+                },
+                "_feedbackIcons": {
+                  "type":"object",
+                  "required":true,
+                  "title": "Feedback icons",
+                  "properties":{
+                    "_isEnabled": {
+                      "type":"boolean",
+                      "required":true,
+                      "default": false,
+                      "title": "Show feedback icons",
+                      "inputType": { "type": "Boolean", "options": [false, true]},
+                      "validators": []
+                    },
+                    "_correctIcon": {
+                      "type":"string",
+                      "required":true,
+                      "default": "",
+                      "inputType": "Asset:image",
+                      "validators": []
+                    },
+                    "_partlyCorrectIcon": {
+                      "type":"string",
+                      "required":true,
+                      "default": "",
+                      "inputType": "Asset:image",
+                      "validators": []
+                    },
+                    "_incorrectIcon": {
+                      "type":"string",
+                      "required":true,
+                      "default": "",
+                      "inputType": "Asset:image",
+                      "validators": []
+                    }
+                  }
+                },
+                "_inlineFeedback": {
+                  "type":"object",
+                  "required":true,
+                  "title": "Inline feedback",
+                  "properties":{
+                    "_isEnabled": {
+                      "type":"boolean",
+                      "required":true,
+                      "default": false,
+                      "title": "Feedback is inline",
+                      "inputType": { "type": "Boolean", "options": [false, true]},
+                      "validators": []
+                    }
+                  }
+                },
+                "_hideFeedbackButton": {
+                  "type":"object",
+                  "required":true,
+                  "title": "Hide feedback button",
+                  "properties":{
+                    "_isEnabled": {
+                      "type":"boolean",
+                      "required":true,
+                      "default": false,
+                      "title": "Feedback button is hidden",
+                      "inputType": { "type": "Boolean", "options": [false, true]},
+                      "validators": []
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
