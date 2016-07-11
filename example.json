@@ -17,5 +17,11 @@
 	},
 	"_hideFeedbackButton": {
 		"_isEnabled": true
+	},
+	"_feedbackTitle": {
+		"_isEnabled": true,
+		"correct": "That's correct.",
+		"incorrect": "That's not correct.",
+		"partlyCorrect": "That's partly correct."
 	}
 },

@@ -33,6 +33,20 @@ define([
             if (view.model.get('_enhancedQuestion')._feedbackIcons._isEnabled) {
                 new FeedbackHeaderView({model:view.model});
             }
+
+            /// Feedback title
+            if (view.model.get('_enhancedQuestion')._feedbackTitle._isEnabled) {
+                // Correct
+                if (view.model.get('_isCorrect')) {
+                    $('.notify').find('.notify-popup-title-inner').html(view.model.get('_enhancedQuestion')._feedbackTitle.correct);
+                // Partly correct
+                } else if (view.model.get('_isAtLeastOneCorrectSelection')) {
+                    $('.notify').find('.notify-popup-title-inner').html(view.model.get('_enhancedQuestion')._feedbackTitle.partlyCorrect);
+                    // Incorrect
+                } else {
+                    $('.notify').find('.notify-popup-title-inner').html(view.model.get('_enhancedQuestion')._feedbackTitle.incorrect);
+                }
+            }
         }
     },
 
