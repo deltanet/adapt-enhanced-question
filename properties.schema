@@ -127,7 +127,7 @@
                     }
                   }
                 },
-                "_inlineFeedback": {
+                "_feedbackTitle": {
                   "type":"object",
                   "required":true,
                   "title": "Inline feedback",
