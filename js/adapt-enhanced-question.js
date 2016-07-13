@@ -1,8 +1,7 @@
 define([
     'coreJS/adapt',
-    './inline-feedbackView',
-    './feedback-headerView'
-],function(Adapt, InlineFeedbackView, FeedbackHeaderView) {
+    './inline-feedbackView'
+],function(Adapt, InlineFeedbackView) {
 
   var EnhancedQuestion = _.extend({
 
@@ -24,29 +23,74 @@ define([
 
         if (view.model.get('_enhancedQuestion') && view.model.get('_enhancedQuestion')._isEnabled) {
 
+            // Remove notify that the tutor extension has triggered
+            $('.notify').remove();
+
             // Partly correct feature
             if (view.model.get('_enhancedQuestion')._overidePartlyCorrect._isEnabled && view.model.get('_isAtLeastOneCorrectSelection') && !view.model.get('_isCorrect')) {
                 view.model.set('_score', view.model.get('_enhancedQuestion')._overidePartlyCorrect._questionWeight);
             }
 
-            /// Feedback icon
-            if (view.model.get('_enhancedQuestion')._feedbackIcons._isEnabled) {
-                new FeedbackHeaderView({model:view.model});
-            }
+            // Set alert title
+            var feedbackTitle = "";
 
             /// Feedback title
             if (view.model.get('_enhancedQuestion')._feedbackTitle._isEnabled) {
                 // Correct
                 if (view.model.get('_isCorrect')) {
-                    $('.notify').find('.notify-popup-title-inner').html(view.model.get('_enhancedQuestion')._feedbackTitle.correct);
+                    feedbackTitle = view.model.get('_enhancedQuestion')._feedbackTitle.correct;
                 // Partly correct
                 } else if (view.model.get('_isAtLeastOneCorrectSelection')) {
-                    $('.notify').find('.notify-popup-title-inner').html(view.model.get('_enhancedQuestion')._feedbackTitle.partlyCorrect);
+                    feedbackTitle = view.model.get('_enhancedQuestion')._feedbackTitle.partlyCorrect;
                     // Incorrect
                 } else {
-                    $('.notify').find('.notify-popup-title-inner').html(view.model.get('_enhancedQuestion')._feedbackTitle.incorrect);
+                    feedbackTitle = view.model.get('_enhancedQuestion')._feedbackTitle.incorrect;
+                }
+
+            } else {
+                feedbackTitle = view.model.get("feedbackTitle");
+            }
+
+            // Check for feedback icon
+            if (view.model.get('_enhancedQuestion')._feedbackIcons._isEnabled) {
+
+                var feedbackIconTitle = "";
+
+                if (view.model.get('_isCorrect')) {
+                    feedbackIconTitle = "<div class=feedback-icon><img src='"+view.model.get('_enhancedQuestion')._feedbackIcons._correctIcon+"'/></div>"+feedbackTitle;
+                } else if (view.model.get('_isAtLeastOneCorrectSelection')) {
+                    feedbackIconTitle = "<div class=feedback-icon><img src='"+view.model.get('_enhancedQuestion')._feedbackIcons._partlyCorrectIcon+"'/></div>"+feedbackTitle;
+                } else {
+                    feedbackIconTitle = "<div class=feedback-icon><img src='"+view.model.get('_enhancedQuestion')._feedbackIcons._incorrectIcon+"'/></div>"+feedbackTitle;
+                }
+
+                feedbackTitle = feedbackIconTitle;
+            }
+
+            // Set up new notify object
+            var alertObject = {
+                title: feedbackTitle,
+                body: view.model.get("feedbackMessage")
+            };
+
+            if (view.model.has('_isCorrect')) {
+                // Attach specific classes so that feedback can be styled.
+                if (view.model.get('_isCorrect')) {
+                    alertObject._classes = 'correct';
+                } else {
+                    if (view.model.has('_isAtLeastOneCorrectSelection')) {
+                        // Partially correct feedback is an option.
+                        alertObject._classes = view.model.get('_isAtLeastOneCorrectSelection')
+                            ? 'partially-correct'
+                            : 'incorrect';
+                    } else {
+                        alertObject._classes = 'incorrect';
+                    }
                 }
             }
+
+            Adapt.trigger('notify:popup', alertObject);
+
         }
     },
 
