@@ -126,6 +126,45 @@
                       "validators": []
                     }
                   }
+                },
+                "_feedbackTitle": {
+                  "type":"object",
+                  "required":true,
+                  "title": "Inline feedback",
+                  "properties":{
+                    "_isEnabled": {
+                      "type":"boolean",
+                      "required":true,
+                      "default": false,
+                      "title": "Change feedback title",
+                      "inputType": { "type": "Boolean", "options": [false, true]},
+                      "validators": []
+                    },
+                    "correct": {
+                      "type": "string",
+                      "required": true,
+                      "default": "Correct",
+                      "inputType": "Text",
+                      "validators": [],
+                      "help": "Title for the correct feedback"
+                    },
+                    "incorrect": {
+                      "type": "string",
+                      "required": true,
+                      "default": "Incorrect",
+                      "inputType": "Text",
+                      "validators": [],
+                      "help": "Title for the incorrect feedback"
+                    },
+                    "partlyCorrect": {
+                      "type": "string",
+                      "required": true,
+                      "default": "Partly correct",
+                      "inputType": "Text",
+                      "validators": [],
+                      "help": "Title for the partly correct feedback"
+                    }
+                  }
                 }
               }
             }
