@@ -23,9 +23,6 @@ define([
 
         if (view.model.get('_enhancedQuestion') && view.model.get('_enhancedQuestion')._isEnabled) {
 
-            // Remove notify that the tutor extension has triggered
-            $('.notify').remove();
-
             // Partly correct feature
             if (view.model.get('_enhancedQuestion')._overidePartlyCorrect._isEnabled && view.model.get('_isAtLeastOneCorrectSelection') && !view.model.get('_isCorrect')) {
                 view.model.set('_score', view.model.get('_enhancedQuestion')._overidePartlyCorrect._questionWeight);

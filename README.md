@@ -3,6 +3,12 @@ adapt-enhanced-question
 
 An extension to add extra features to an adapt question. Features are inline feedback, hiding the Show feedback button if not required, adding icons for feedback and also the ability to overide the partlycorrect score with a new score.
 
+===============
+##Limitations
+===============
+
+This cannot be used when adapt-contrib-tutor is installed, as there are issues with adapt-contrib-trickle events.
+
 ----------------------------
 **Version number:**  2.0.0     
 **Framework versions supported:**  ^2.0.4    
