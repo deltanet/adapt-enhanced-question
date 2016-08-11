@@ -21,7 +21,7 @@ define([
 
     onShowFeedback: function(view) {
 
-        if (view.model.get('_enhancedQuestion') && view.model.get('_enhancedQuestion')._isEnabled) {
+        if (view.model.get('_enhancedQuestion') && view.model.get('_enhancedQuestion')._isEnabled && view.model.get('_canShowFeedback')) {
 
             // Partly correct feature
             if (view.model.get('_enhancedQuestion')._overidePartlyCorrect._isEnabled && view.model.get('_isAtLeastOneCorrectSelection') && !view.model.get('_isCorrect')) {
