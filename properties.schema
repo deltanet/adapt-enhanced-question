@@ -29,6 +29,7 @@
             "_enhancedQuestion": {
               "type":"object",
               "required":false,
+              "legend": "Enhanced Question",
               "properties": {
                 "_isEnabled": {
                   "type":"boolean",
