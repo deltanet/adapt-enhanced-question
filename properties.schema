@@ -147,7 +147,8 @@
                       "default": "Correct",
                       "inputType": "Text",
                       "validators": [],
-                      "help": "Title for the correct feedback"
+                      "help": "Title for the correct feedback",
+                      "translatable": true
                     },
                     "incorrect": {
                       "type": "string",
@@ -155,7 +156,8 @@
                       "default": "Incorrect",
                       "inputType": "Text",
                       "validators": [],
-                      "help": "Title for the incorrect feedback"
+                      "help": "Title for the incorrect feedback",
+                      "translatable": true
                     },
                     "partlyCorrect": {
                       "type": "string",
@@ -163,7 +165,8 @@
                       "default": "Partly correct",
                       "inputType": "Text",
                       "validators": [],
-                      "help": "Title for the partly correct feedback"
+                      "help": "Title for the partly correct feedback",
+                      "translatable": true
                     }
                   }
                 }
