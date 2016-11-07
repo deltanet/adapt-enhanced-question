@@ -98,11 +98,6 @@ define([
             // Add class to component
             $('.'+view.model.get('_id')).addClass('enhanced-question-enabled');
 
-            // Hide feedback button
-            if (view.model.get('_enhancedQuestion')._hideFeedbackButton._isEnabled) {
-                $('.'+view.model.get('_id')).find('.buttons').addClass('feedback-button-removed');
-            }
-
             /// Inline feedback
             if (view.model.get('_enhancedQuestion')._inlineFeedback._isEnabled) {
                 new InlineFeedbackView({model:view.model});

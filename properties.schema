@@ -113,21 +113,6 @@
                     }
                   }
                 },
-                "_hideFeedbackButton": {
-                  "type":"object",
-                  "required":true,
-                  "title": "Hide feedback button",
-                  "properties":{
-                    "_isEnabled": {
-                      "type":"boolean",
-                      "required":true,
-                      "default": false,
-                      "title": "Feedback button is hidden",
-                      "inputType": { "type": "Boolean", "options": [false, true]},
-                      "validators": []
-                    }
-                  }
-                },
                 "_feedbackTitle": {
                   "type":"object",
                   "required":true,

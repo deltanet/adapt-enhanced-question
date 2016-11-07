@@ -15,9 +15,6 @@
 	"_inlineFeedback": {
 		"_isEnabled": true
 	},
-	"_hideFeedbackButton": {
-		"_isEnabled": true
-	},
 	"_feedbackTitle": {
 		"_isEnabled": true,
 		"correct": "That's correct.",
