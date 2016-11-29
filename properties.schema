@@ -35,66 +35,32 @@
                   "type":"boolean",
                   "required":true,
                   "default": false,
-                  "title": "Enhanced question",
+                  "title": "Is enabled",
                   "inputType": { "type": "Boolean", "options": [false, true]},
-                  "validators": []
+                  "validators": [],
+                  "help": "If set to 'true', this component will have the enhanced question functionality"
                 },
                 "_overidePartlyCorrect": {
                   "type":"object",
                   "required":true,
-                  "title": "Overide partly correct score",
+                  "title": "Change partly correct score",
                   "properties":{
                     "_isEnabled": {
                       "type":"boolean",
                       "required":true,
                       "default": false,
-                      "title": "Overide partly correct score",
+                      "title": "Is enabled",
                       "inputType": { "type": "Boolean", "options": [false, true]},
-                      "validators": []
+                      "validators": [],
+                      "help": "If set to 'true', the question weight set below will be used if the question is answered partly correct"
                     },
                     "_questionWeight": {
                       "type":"number",
                       "required":true,
                       "default": 1,
-                      "title": "New question weight",
+                      "title": "Question weight",
                       "inputType":"Number",
                       "validators": ["required", "number"]
-                    }
-                  }
-                },
-                "_feedbackIcons": {
-                  "type":"object",
-                  "required":true,
-                  "title": "Feedback icons",
-                  "properties":{
-                    "_isEnabled": {
-                      "type":"boolean",
-                      "required":true,
-                      "default": false,
-                      "title": "Show feedback icons",
-                      "inputType": { "type": "Boolean", "options": [false, true]},
-                      "validators": []
-                    },
-                    "_correctIcon": {
-                      "type":"string",
-                      "required":true,
-                      "default": "",
-                      "inputType": "Asset:image",
-                      "validators": []
-                    },
-                    "_partlyCorrectIcon": {
-                      "type":"string",
-                      "required":true,
-                      "default": "",
-                      "inputType": "Asset:image",
-                      "validators": []
-                    },
-                    "_incorrectIcon": {
-                      "type":"string",
-                      "required":true,
-                      "default": "",
-                      "inputType": "Asset:image",
-                      "validators": []
                     }
                   }
                 },
@@ -107,50 +73,95 @@
                       "type":"boolean",
                       "required":true,
                       "default": false,
-                      "title": "Feedback is inline",
+                      "title": "Is enabled",
                       "inputType": { "type": "Boolean", "options": [false, true]},
-                      "validators": []
+                      "validators": [],
+                      "help": "If set to 'true', the feedback will be displayed below the question instead of a popup"
+                    }
+                  }
+                },
+                "_feedbackIcons": {
+                  "type":"object",
+                  "required":true,
+                  "title": "Feedback graphic",
+                  "properties":{
+                    "_isEnabled": {
+                      "type":"boolean",
+                      "required":true,
+                      "default": false,
+                      "title": "Is enabled",
+                      "inputType": { "type": "Boolean", "options": [false, true]},
+                      "validators": [],
+                      "help": "If set to 'true', the graphics set below will display in the feedback popup"
+                    },
+                    "_correctIcon": {
+                      "type":"string",
+                      "required":true,
+                      "default": "",
+                      "title": "Correct graphic",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Select a graphic to be used for the correct feedback"
+                    },
+                    "_partlyCorrectIcon": {
+                      "type":"string",
+                      "required":true,
+                      "default": "",
+                      "title": "Partly correct graphic",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Select a graphic to be used for the partly correct feedback"
+                    },
+                    "_incorrectIcon": {
+                      "type":"string",
+                      "required":true,
+                      "default": "",
+                      "title": "Incorrect graphic",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Select a graphic to be used for the incorrect feedback"
                     }
                   }
                 },
                 "_feedbackTitle": {
                   "type":"object",
                   "required":true,
-                  "title": "Inline feedback",
+                  "title": "Feedback title",
                   "properties":{
                     "_isEnabled": {
                       "type":"boolean",
                       "required":true,
                       "default": false,
-                      "title": "Change feedback title",
+                      "title": "Is enabled",
                       "inputType": { "type": "Boolean", "options": [false, true]},
-                      "validators": []
+                      "validators": [],
+                      "help": "If set to 'true', the titles set below will display in the question feedback"
                     },
                     "correct": {
                       "type": "string",
                       "required": true,
                       "default": "Correct",
+                      "title": "Correct title",
                       "inputType": "Text",
                       "validators": [],
-                      "help": "Title for the correct feedback",
-                      "translatable": true
-                    },
-                    "incorrect": {
-                      "type": "string",
-                      "required": true,
-                      "default": "Incorrect",
-                      "inputType": "Text",
-                      "validators": [],
-                      "help": "Title for the incorrect feedback",
                       "translatable": true
                     },
                     "partlyCorrect": {
                       "type": "string",
                       "required": true,
                       "default": "Partly correct",
+                      "title": "Partly correct title",
                       "inputType": "Text",
                       "validators": [],
-                      "help": "Title for the partly correct feedback",
+                      "translatable": true
+                    },
+                    "incorrect": {
+                      "type": "string",
+                      "required": true,
+                      "default": "Incorrect",
+                      "title": "Incorrect title",
+                      "inputType": "Text",
+                      "validators": [],
                       "translatable": true
                     }
                   }
