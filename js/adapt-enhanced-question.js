@@ -20,14 +20,18 @@ define([
     },
 
     onShowFeedback: function(view) {
+      // Partly correct score change
+      if (view.model.get('_enhancedQuestion') && view.model.get('_enhancedQuestion')._isEnabled && view.model.get('_enhancedQuestion')._overidePartlyCorrect._isEnabled && view.model.get('_isAtLeastOneCorrectSelection') && !view.model.get('_isCorrect')) {
 
+          view.model.set('_score', view.model.get('_enhancedQuestion')._overidePartlyCorrect._questionWeight);
+          view.model.set('_isCorrect', true);
+
+          $('.'+view.model.get('_id')).find('.buttons-marking-icon').removeClass('icon-cross');
+          $('.'+view.model.get('_id')).find('.buttons-marking-icon').addClass('icon-tick');
+
+      }
+      // Custom notify elements
         if (view.model.get('_enhancedQuestion') && view.model.get('_enhancedQuestion')._isEnabled && view.model.get('_canShowFeedback')) {
-
-            // Partly correct feature
-            if (view.model.get('_enhancedQuestion')._overidePartlyCorrect._isEnabled && view.model.get('_isAtLeastOneCorrectSelection') && !view.model.get('_isCorrect')) {
-                view.model.set('_score', view.model.get('_enhancedQuestion')._overidePartlyCorrect._questionWeight);
-            }
-
             // Set alert title
             var feedbackTitle = "";
 
@@ -89,6 +93,7 @@ define([
             Adapt.trigger('notify:popup', alertObject);
 
         }
+
     },
 
     onQuestionReady: function(view) {
