@@ -139,8 +139,8 @@
                     },
                     "correct": {
                       "type": "string",
-                      "required": true,
-                      "default": "Correct",
+                      "required": false,
+                      "default": "",
                       "title": "Correct title",
                       "inputType": "Text",
                       "validators": [],
@@ -148,8 +148,8 @@
                     },
                     "partlyCorrect": {
                       "type": "string",
-                      "required": true,
-                      "default": "Partly correct",
+                      "required": false,
+                      "default": "",
                       "title": "Partly correct title",
                       "inputType": "Text",
                       "validators": [],
@@ -157,8 +157,8 @@
                     },
                     "incorrect": {
                       "type": "string",
-                      "required": true,
-                      "default": "Incorrect",
+                      "required": false,
+                      "default": "",
                       "title": "Incorrect title",
                       "inputType": "Text",
                       "validators": [],
