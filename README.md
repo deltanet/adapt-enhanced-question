@@ -10,7 +10,7 @@ An extension to add extra features to an adapt question. Features are inline fee
 This cannot be used when adapt-contrib-tutor is installed, as there are issues with adapt-contrib-trickle events.
 
 ----------------------------
-**Version number:**  2.0.6     
+**Version number:**  2.0.7     
 **Framework versions supported:**  ^2.0.4    
 **Author / maintainer:** DeltaNet with [contributors](https://github.com/deltanet/adapt-enhanced-question/graphs/contributors)     
 **Accessibility support:** Yes  
