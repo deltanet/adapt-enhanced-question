@@ -28,35 +28,35 @@
           "properties":{
             "_enhancedQuestion": {
               "type":"object",
-              "required":false,
+              "required": false,
               "legend": "Enhanced Question",
               "properties": {
                 "_isEnabled": {
                   "type":"boolean",
-                  "required":true,
+                  "required": true,
                   "default": false,
-                  "title": "Is enabled",
-                  "inputType": { "type": "Boolean", "options": [false, true]},
+                  "title": "Is Enabled",
+                  "inputType": "Checkbox",
                   "validators": [],
-                  "help": "If set to 'true', this component will have the enhanced question functionality"
+                  "help": "If enabled, this component will have the enhanced question functionality."
                 },
                 "_overidePartlyCorrect": {
                   "type":"object",
-                  "required":true,
+                  "required": true,
                   "title": "Change partly correct score",
                   "properties":{
                     "_isEnabled": {
                       "type":"boolean",
-                      "required":true,
+                      "required": true,
                       "default": false,
-                      "title": "Is enabled",
-                      "inputType": { "type": "Boolean", "options": [false, true]},
+                      "title": "Is Enabled",
+                      "inputType": "Checkbox",
                       "validators": [],
-                      "help": "If set to 'true', the question weight set below will be used if the question is answered partly correct"
+                      "help": "If enabled, the question weight set below will be used if the question is answered partly correct."
                     },
                     "_questionWeight": {
                       "type":"number",
-                      "required":true,
+                      "required": true,
                       "default": 1,
                       "title": "Question weight",
                       "inputType":"Number",
@@ -66,82 +66,82 @@
                 },
                 "_inlineFeedback": {
                   "type":"object",
-                  "required":true,
+                  "required": true,
                   "title": "Inline feedback",
                   "properties":{
                     "_isEnabled": {
                       "type":"boolean",
-                      "required":true,
+                      "required": true,
                       "default": false,
-                      "title": "Is enabled",
-                      "inputType": { "type": "Boolean", "options": [false, true]},
+                      "title": "Is Enabled",
+                      "inputType": "Checkbox",
                       "validators": [],
-                      "help": "If set to 'true', the feedback will be displayed below the question instead of a popup"
+                      "help": "If enabled, the feedback will be displayed below the question instead of a popup."
                     }
                   }
                 },
                 "_feedbackIcons": {
                   "type":"object",
-                  "required":true,
+                  "required": true,
                   "title": "Feedback graphic",
                   "properties":{
                     "_isEnabled": {
                       "type":"boolean",
-                      "required":true,
+                      "required": true,
                       "default": false,
-                      "title": "Is enabled",
-                      "inputType": { "type": "Boolean", "options": [false, true]},
+                      "title": "Is Enabled",
+                      "inputType": "Checkbox",
                       "validators": [],
-                      "help": "If set to 'true', the graphics set below will display in the feedback popup"
+                      "help": "If enabled, the graphics set below will display in the feedback popup."
                     },
                     "_correctIcon": {
                       "type":"string",
-                      "required":true,
+                      "required": true,
                       "default": "",
                       "title": "Correct graphic",
                       "inputType": "Asset:image",
                       "validators": [],
-                      "help": "Select a graphic to be used for the correct feedback"
+                      "help": "Select a graphic to be used for the correct feedback."
                     },
                     "_partlyCorrectIcon": {
                       "type":"string",
-                      "required":true,
+                      "required": true,
                       "default": "",
                       "title": "Partly correct graphic",
                       "inputType": "Asset:image",
                       "validators": [],
-                      "help": "Select a graphic to be used for the partly correct feedback"
+                      "help": "Select a graphic to be used for the partly correct feedback."
                     },
                     "_incorrectIcon": {
                       "type":"string",
-                      "required":true,
+                      "required": true,
                       "default": "",
                       "title": "Incorrect graphic",
                       "inputType": "Asset:image",
                       "validators": [],
-                      "help": "Select a graphic to be used for the incorrect feedback"
+                      "help": "Select a graphic to be used for the incorrect feedback."
                     }
                   }
                 },
                 "_feedbackTitle": {
                   "type":"object",
-                  "required":true,
-                  "title": "Feedback title",
+                  "required": true,
+                  "title": "Feedback titles",
                   "properties":{
                     "_isEnabled": {
                       "type":"boolean",
-                      "required":true,
+                      "required": true,
                       "default": false,
-                      "title": "Is enabled",
-                      "inputType": { "type": "Boolean", "options": [false, true]},
+                      "title": "Is Enabled",
+                      "inputType": "Checkbox",
                       "validators": [],
-                      "help": "If set to 'true', the titles set below will display in the question feedback"
+                      "help": "If enabled, the titles set below will display in the question feedback."
                     },
                     "correct": {
                       "type": "string",
                       "required": false,
                       "default": "",
-                      "title": "Correct title",
+                      "title": "Correct",
                       "inputType": "Text",
                       "validators": [],
                       "translatable": true
@@ -150,7 +150,7 @@
                       "type": "string",
                       "required": false,
                       "default": "",
-                      "title": "Partly correct title",
+                      "title": "Partly correct",
                       "inputType": "Text",
                       "validators": [],
                       "translatable": true
@@ -159,7 +159,7 @@
                       "type": "string",
                       "required": false,
                       "default": "",
-                      "title": "Incorrect title",
+                      "title": "Incorrect",
                       "inputType": "Text",
                       "validators": [],
                       "translatable": true
