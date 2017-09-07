@@ -9,8 +9,11 @@
 	"_feedbackIcons": {
 		"_isEnabled": true,
 		"_correctIcon": "adapt/css/assets/correct-icon.png",
+		"correctAlt": "",
 		"_partlyCorrectIcon": "adapt/css/assets/partlyCorrect-icon.png",
-		"_incorrectIcon": "adapt/css/assets/incorrect-icon.png"
+		"partlyCorrectAlt": "",
+		"_incorrectIcon": "adapt/css/assets/incorrect-icon.png",
+		"incorrectAlt": ""
 	},
 	"_inlineFeedback": {
 		"_isEnabled": true

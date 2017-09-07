@@ -103,6 +103,16 @@
                       "validators": [],
                       "help": "Select a graphic to be used for the correct feedback."
                     },
+                    "correctAlt": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "Correct graphic Alt text",
+                      "inputType": "Text",
+                      "validators": [],
+                      "help": "Alternative text for the correct feedback graphic.",
+                      "translatable": true
+                    },
                     "_partlyCorrectIcon": {
                       "type":"string",
                       "required": true,
@@ -112,6 +122,16 @@
                       "validators": [],
                       "help": "Select a graphic to be used for the partly correct feedback."
                     },
+                    "partlyCorrectAlt": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "Partly correct graphic Alt text",
+                      "inputType": "Text",
+                      "validators": [],
+                      "help": "Alternative text for the partly correct feedback graphic.",
+                      "translatable": true
+                    },
                     "_incorrectIcon": {
                       "type":"string",
                       "required": true,
@@ -120,6 +140,16 @@
                       "inputType": "Asset:image",
                       "validators": [],
                       "help": "Select a graphic to be used for the incorrect feedback."
+                    },
+                    "incorrectAlt": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "Incorrect graphic Alt text",
+                      "inputType": "Text",
+                      "validators": [],
+                      "help": "Alternative text for the incorrect feedback graphic.",
+                      "translatable": true
                     }
                   }
                 },

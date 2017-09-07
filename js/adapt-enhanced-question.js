@@ -54,17 +54,29 @@ define([
 
             // Check for feedback icon
             if (view.model.get('_enhancedQuestion')._feedbackIcons._isEnabled) {
-
                 var feedbackIconTitle = "";
-
                 if (view.model.get('_isCorrect')) {
-                    feedbackIconTitle = "<div class=feedback-icon><img src='"+view.model.get('_enhancedQuestion')._feedbackIcons._correctIcon+"'/></div>"+feedbackTitle;
+                  // Check for image alt tag
+                  if(view.model.get('_enhancedQuestion')._feedbackIcons.correctAlt && !view.model.get('_enhancedQuestion')._feedbackIcons.correctAlt == "") {
+                    feedbackIconTitle = "<div class=feedback-icon><img aria-label='"+view.model.get('_enhancedQuestion')._feedbackIcons.correctAlt+"' tabindex='0' src='"+view.model.get('_enhancedQuestion')._feedbackIcons._correctIcon+"'/></div>"+feedbackTitle;
+                  } else {
+                    feedbackIconTitle = "<div class=feedback-icon><img class='a11y-ignore' aria-hidden='true' tabindex='-1' src='"+view.model.get('_enhancedQuestion')._feedbackIcons._correctIcon+"'/></div>"+feedbackTitle;
+                  }
                 } else if (view.model.get('_isAtLeastOneCorrectSelection')) {
-                    feedbackIconTitle = "<div class=feedback-icon><img src='"+view.model.get('_enhancedQuestion')._feedbackIcons._partlyCorrectIcon+"'/></div>"+feedbackTitle;
+                  // Check for image alt tag
+                  if(view.model.get('_enhancedQuestion')._feedbackIcons.partlyCorrectAlt && !view.model.get('_enhancedQuestion')._feedbackIcons.partlyCorrectAlt == "") {
+                    feedbackIconTitle = "<div class=feedback-icon><img aria-label='"+view.model.get('_enhancedQuestion')._feedbackIcons.partlyCorrectAlt+"' tabindex='0' src='"+view.model.get('_enhancedQuestion')._feedbackIcons._partlyCorrectIcon+"'/></div>"+feedbackTitle;
+                  } else {
+                    feedbackIconTitle = "<div class=feedback-icon><img class='a11y-ignore' aria-hidden='true' tabindex='-1' src='"+view.model.get('_enhancedQuestion')._feedbackIcons._partlyCorrectIcon+"'/></div>"+feedbackTitle;
+                  }
                 } else {
-                    feedbackIconTitle = "<div class=feedback-icon><img src='"+view.model.get('_enhancedQuestion')._feedbackIcons._incorrectIcon+"'/></div>"+feedbackTitle;
+                  // Check for image alt tag
+                  if(view.model.get('_enhancedQuestion')._feedbackIcons.incorrectAlt && !view.model.get('_enhancedQuestion')._feedbackIcons.incorrectAlt == "") {
+                    feedbackIconTitle = "<div class=feedback-icon><img aria-label='"+view.model.get('_enhancedQuestion')._feedbackIcons.incorrectAlt+"' tabindex='0' src='"+view.model.get('_enhancedQuestion')._feedbackIcons._incorrectIcon+"'/></div>"+feedbackTitle;
+                  } else {
+                    feedbackIconTitle = "<div class=feedback-icon><img class='a11y-ignore' aria-hidden='true' tabindex='-1' src='"+view.model.get('_enhancedQuestion')._feedbackIcons._incorrectIcon+"'/></div>"+feedbackTitle;
+                  }
                 }
-
                 feedbackTitle = feedbackIconTitle;
             }
 

@@ -34,9 +34,15 @@ The Enhanced Question attribute group contains values for **_isEnabled**, **_ove
 
 >>**_correctIcon** (string): File name (including path) of the image for the correct feedback. Path should be relative to the *src* folder.  
 
+>>**correctAlt** (string): This text becomes the correct feedback image’s `alt` attribute.  
+
 >>**_partlyCorrectIcon** (string): File name (including path) of the image for the partly correct feedback. Path should be relative to the *src* folder.  
 
+>>**partlyCorrectAlt** (string): This text becomes the partly correct feedback image’s `alt` attribute.  
+
 >>**_incorrectIcon** (string): File name (including path) of the image for the incorrect feedback. Path should be relative to the *src* folder.  
+
+>>**incorrectAlt** (string): This text becomes the incorrect feedback image’s `alt` attribute.  
 
 >**_inlineFeedback** (object):  This `_inlineFeedback` attributes group stores the properties for when feedback is displayed inline instead of in the notify popup. It contains values for **_isEnabled**.  
 
@@ -57,7 +63,7 @@ The Enhanced Question attribute group contains values for **_isEnabled**, **_ove
 This cannot be used when adapt-contrib-tutor is installed, as there are issues with adapt-contrib-trickle events.  
 
 ----------------------------
-**Version number:**  2.0.8     
+**Version number:**  2.1.0    
 **Framework versions supported:**  ^2.0.4    
 **Author / maintainer:** DeltaNet with [contributors](https://github.com/deltanet/adapt-enhanced-question/graphs/contributors)     
 **Accessibility support:** Yes  
