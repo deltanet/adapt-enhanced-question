@@ -3,18 +3,38 @@
 	.feedback-icon {
 		position:relative;
 		float: left;
-        .dir-rtl & {
-            float: right;
-        }
+      .dir-rtl & {
+        float: right;
+      }
 	}
 
 	.feedback {
 		padding-left: 80px;
-        .dir-rtl & {
-        	padding-left: 0px;
-            padding-right: 80px;
-        }
-        margin-bottom: @component-padding * 2;
+    .dir-rtl & {
+      padding-left: 0px;
+      padding-right: 80px;
+    }
+	}
+
+	&.inline-feedback-enabled {
+		.buttons {
+			margin-bottom: 0px;
+			text-align: center;
+			button {
+				float: none;
+				width: auto;
+				&.buttons-action {
+					margin-right: 0;
+				}
+			}
+		}
+		.buttons-feedback {
+			display: none;
+		}
+		.inline-feedback {
+			background-color: @text-background-color;
+	    padding-bottom: @component-padding;
+		}
 	}
 
 	.feedback-title {

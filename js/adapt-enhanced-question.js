@@ -15,8 +15,7 @@ define([
 
     setupEventListeners: function() {
         this.listenTo(Adapt, "componentView:postRender", this.onQuestionReady);
-        this.listenTo(Adapt, "questionView:showFeedback", this.onShowFeedback);
-        this.listenTo(Adapt, "questionView:disabledFeedback", this.onShowFeedback);
+        this.listenTo(Adapt, "questionView:showFeedback questionView:disabledFeedback", this.onShowFeedback);
     },
 
     onShowFeedback: function(view) {
@@ -102,7 +101,9 @@ define([
                 }
             }
 
-            Adapt.trigger('notify:popup', alertObject);
+            if (!view.model.get('_enhancedQuestion')._inlineFeedback._isEnabled) {
+              Adapt.trigger('notify:popup', alertObject);
+            }
 
         }
 
@@ -116,7 +117,7 @@ define([
             $('.'+view.model.get('_id')).addClass('enhanced-question-enabled');
 
             /// Inline feedback
-            if (view.model.get('_enhancedQuestion')._inlineFeedback._isEnabled) {
+            if (view.model.get('_enhancedQuestion')._inlineFeedback._isEnabled && view.model.get('_canShowFeedback')) {
                 new InlineFeedbackView({model:view.model});
             }
 
