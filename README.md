@@ -48,22 +48,26 @@ The Enhanced Question attribute group contains values for **_isEnabled**, **_ove
 
 >>**_isEnabled** (boolean): If `enabled`, the feedback will be displayed below the question.  
 
->**_feedbackTitle** (object):  This `_feedbackTitle` attributes group stores the properties for the titles in the feedback. It contains values for **_isEnabled**, **correct**, **incorrect**, and **partlyCorrect**.  
+>**_feedbackTitle** (object):  This `_feedbackTitle` attributes group stores the properties for the titles in the feedback. It contains values for **_isEnabled**, **correct**, **partlyCorrectNotFinal**, **partlyCorrect**, **incorrectNotFinal**, and **incorrect**.  
 
 >>**_isEnabled** (boolean): If `enabled`, the specified title will replace the default feedback title.  
 
 >>**correct** (string): This text becomes the new title for correct feedback.  
 
->>**incorrect** (string): This text becomes the new title for incorrect feedback.  
+>>**partlyCorrectNotFinal** (string):  This text becomes the title when the question is partly correct but there are attempts remaining.  
 
 >>**partlyCorrect** (string): This text becomes the new title for partlyCorrect feedback.  
+
+>>**incorrectNotFinal** (string):  This text becomes the title when the question is incorrect but there are attempts remaining.  
+
+>>**incorrect** (string): This text becomes the new title for incorrect feedback.  
 
 ## Limitations
 
 This cannot be used when adapt-contrib-tutor is installed, as there are issues with adapt-contrib-trickle events.  
 
 ----------------------------
-**Version number:**  2.1.2    
+**Version number:**  2.2.0    
 **Framework versions supported:**  ^2.0.4    
 **Author / maintainer:** DeltaNet with [contributors](https://github.com/deltanet/adapt-enhanced-question/graphs/contributors)     
 **Accessibility support:** Yes  

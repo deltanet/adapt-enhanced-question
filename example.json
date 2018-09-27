@@ -20,8 +20,10 @@
 	},
 	"_feedbackTitle": {
 		"_isEnabled": true,
-		"correct": "That's correct.",
-		"incorrect": "That's not correct.",
-		"partlyCorrect": "That's partly correct."
+		"correct": "That's right",
+		"partlyCorrectNotFinal": "That's partly right",
+		"partlyCorrect": "That's partly right",
+		"incorrectNotFinal": "That's not right",
+		"incorrect": "That's not right"
 	}
 },

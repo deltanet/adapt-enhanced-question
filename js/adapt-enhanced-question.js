@@ -41,10 +41,20 @@ define([
                     feedbackTitle = view.model.get('_enhancedQuestion')._feedbackTitle.correct;
                 // Partly correct
                 } else if (view.model.get('_isAtLeastOneCorrectSelection')) {
-                    feedbackTitle = view.model.get('_enhancedQuestion')._feedbackTitle.partlyCorrect;
+                    // Check attempts
+                    if (view.model.get('_attemptsLeft') === 0) {
+                      feedbackTitle = view.model.get('_enhancedQuestion')._feedbackTitle.partlyCorrect;
+                    } else {
+                      feedbackTitle = view.model.get('_enhancedQuestion')._feedbackTitle.partlyCorrectNotFinal;
+                    }
                     // Incorrect
                 } else {
-                    feedbackTitle = view.model.get('_enhancedQuestion')._feedbackTitle.incorrect;
+                    // Check attempts
+                    if (view.model.get('_attemptsLeft') === 0) {
+                      feedbackTitle = view.model.get('_enhancedQuestion')._feedbackTitle.incorrect;
+                    } else {
+                      feedbackTitle = view.model.get('_enhancedQuestion')._feedbackTitle.incorrectNotFinal;
+                    }
                 }
 
             } else {

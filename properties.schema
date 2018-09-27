@@ -174,25 +174,48 @@
                       "title": "Correct",
                       "inputType": "Text",
                       "validators": [],
-                      "translatable": true
+                      "translatable": true,
+                      "help": "Correct title for the question feedback."
+                    },
+                    "partlyCorrectNotFinal": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "Partly Correct Not Final",
+                      "inputType": "Text",
+                      "validators": [],
+                      "translatable": true,
+                      "help": "Partly correct title for any attempt apart from the last attempt."
                     },
                     "partlyCorrect": {
                       "type": "string",
                       "required": false,
                       "default": "",
-                      "title": "Partly correct",
+                      "title": "Partly Correct Final",
                       "inputType": "Text",
                       "validators": [],
-                      "translatable": true
+                      "translatable": true,
+                      "help": "Partly correct title for the final attempt."
+                    },
+                    "incorrectNotFinal": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "Incorrect Not Final",
+                      "inputType": "Text",
+                      "validators": [],
+                      "translatable": true,
+                      "help": "Inccorrect title for any attempt apart from the last attempt."
                     },
                     "incorrect": {
                       "type": "string",
                       "required": false,
                       "default": "",
-                      "title": "Incorrect",
+                      "title": "Incorrect Final",
                       "inputType": "Text",
                       "validators": [],
-                      "translatable": true
+                      "translatable": true,
+                      "help": "Incorrect title for the final attempt."
                     }
                   }
                 }
