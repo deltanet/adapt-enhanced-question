@@ -2,6 +2,7 @@
 
 "_enhancedQuestion": {
 	"_isEnabled": true,
+	"close": "Close",
 	"_overidePartlyCorrect": {
 		"_isEnabled": true,
 		"_questionWeight": 0.5

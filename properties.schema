@@ -40,6 +40,16 @@
                   "validators": [],
                   "help": "If enabled, this component will have the enhanced question functionality."
                 },
+                "close": {
+                  "type": "string",
+                  "required": false,
+                  "default": "Continue",
+                  "title": "Close Button Text",
+                  "inputType": "Text",
+                  "validators": [],
+                  "help": "Button label text for the button to close the feedback.",
+                  "translatable": true
+                },
                 "_overidePartlyCorrect": {
                   "type":"object",
                   "required": true,

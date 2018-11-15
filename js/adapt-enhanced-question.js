@@ -89,10 +89,17 @@ define([
                 feedbackTitle = feedbackIconTitle;
             }
 
+            var buttonText = (view.model.get('_enhancedQuestion').close) ? view.model.get('_enhancedQuestion').close : Adapt.course.get('_globals')._accessibility._ariaLabels.closePopup;
+
             // Set up new notify object
             var alertObject = {
                 title: feedbackTitle,
-                body: view.model.get("feedbackMessage")
+                body: view.model.get("feedbackMessage"),
+                _prompts:[
+                    {
+                        promptText: buttonText
+                    }
+                ],
             };
 
             if (view.model.has('_isCorrect')) {
@@ -112,7 +119,7 @@ define([
             }
 
             if (!view.model.get('_enhancedQuestion')._inlineFeedback._isEnabled) {
-              Adapt.trigger('notify:popup', alertObject);
+              Adapt.trigger('notify:prompt', alertObject);
             }
 
         }

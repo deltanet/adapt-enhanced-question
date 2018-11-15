@@ -26,6 +26,8 @@ The Enhanced Question attribute group contains values for **_isEnabled**, **_ove
 
 >>**_isEnabled** (boolean): If `enabled`, the partly correct score will be changed.  
 
+>>**close** (string): This text becomes the close button text.  
+
 >>**_questionWeight** (number): Defines the new question weight for a partly correct answer.  
 
 >**_feedbackIcons** (object):  This `_feedbackIcons` attributes group stores the properties for when an image is added to the feedback. It contains values for **_isEnabled**, **_correctIcon**, **_partlyCorrectIcon**, and **_incorrectIcon**.  
@@ -67,7 +69,7 @@ The Enhanced Question attribute group contains values for **_isEnabled**, **_ove
 This cannot be used when adapt-contrib-tutor is installed, as there are issues with adapt-contrib-trickle events.  
 
 ----------------------------
-**Version number:**  2.2.0    
+**Version number:**  2.3.0    
 **Framework versions supported:**  ^2.0.4    
 **Author / maintainer:** DeltaNet with [contributors](https://github.com/deltanet/adapt-enhanced-question/graphs/contributors)     
 **Accessibility support:** Yes  
