@@ -43,7 +43,7 @@
                 "close": {
                   "type": "string",
                   "required": false,
-                  "default": "Continue",
+                  "default": "Close",
                   "title": "Close Button Text",
                   "inputType": "Text",
                   "validators": [],
