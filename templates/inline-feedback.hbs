@@ -1,7 +1,17 @@
+{{! make the _globals object in course.json available to this template}}
+{{import_globals}}
 <div class="feedback-icon">
-    <div class="buttons-marking-icon icon display-none"></div>
+  <div class="buttons-marking-icon icon"></div>
 </div>
 <div class="feedback">
-    <div class="feedback-title display-none"></div>
-    <div class="feedback-message display-none"></div>
+  {{#if feedbackTitle}}
+  <div class="feedback-title">
+    {{{compile feedbackTitle}}}
+  </div>
+  {{/if}}
+  {{#if feedbackMessage}}
+  <div class="feedback-message">
+    {{{compile feedbackMessage}}}
+  </div>
+  {{/if}}
 </div>

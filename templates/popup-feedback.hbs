@@ -1,0 +1,31 @@
+{{! make the _globals object in course.json available to this template}}
+{{import_globals}}
+<div class="enhancedQuestion-feedback-inner">
+	{{#if image}}
+	<div class="enhancedQuestion-popup-image">
+		<img src="{{image}}" {{#if alt}}aria-label="{{alt}}" {{else}}aria-hidden="true"{{/if}}/>
+	</div>
+	{{/if}}
+	<div class="enhancedQuestion-popup-content">
+		<div class="enhancedQuestion-popup-content-inner">
+			{{#if feedbackTitle}}
+			<div class="enhancedQuestion-popup-title">
+				<div class="enhancedQuestion-popup-title-inner h5" role="heading" aria-level="1">
+					{{{compile feedbackTitle}}}
+				</div>
+			</div>
+			{{/if}}
+			{{#if feedbackMessage}}
+			<div class="enhancedQuestion-popup-body">
+				<div class="enhancedQuestion-popup-body-inner">{{{compile feedbackMessage}}}</div>
+			</div>
+			{{/if}}
+		</div>
+	</div>
+</div>
+<div class="enhancedQuestion-popup-buttons">
+	<button class="enhancedQuestion-popup-close" aria-label="{{_enhancedQuestion.close}}">
+		{{{_enhancedQuestion.close}}}
+  </button>
+</div>
+{{a11y_wrap_focus}}
