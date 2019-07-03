@@ -15,7 +15,7 @@ define([
         render: function () {
           var data = this.model.toJSON();
           var template = Handlebars.templates["inline-feedback"];
-          $(this.el).html(template(data)).appendTo('.component-inner');
+          $(this.el).html(template(data)).appendTo('.'+this.model.get('_id')+">.component-inner");
 
           $('.'+this.model.get('_id')).addClass('inline-feedback-enabled');
 
