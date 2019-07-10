@@ -7,7 +7,7 @@ define([
         className: "enhancedQuestion-popup",
 
         events: {
-          'click .enhancedQuestion-popup-close': 'closePopup'
+          'click .enhancedQuestion-close-button': 'closePopup'
         },
 
         initialize: function() {

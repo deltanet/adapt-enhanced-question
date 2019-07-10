@@ -81,24 +81,23 @@ define([
 
       Adapt.trigger('audio:stopAllChannels');
 
-      var classes = ' enhancedQuestion';
+      var classes = ' enhancedQuestion-popup';
 
       // Attach specific classes so that feedback can be styled.
       if (view.model.get('_isCorrect')) {
-        classes = ' enhancedQuestion correct';
+        classes = ' enhancedQuestion-popup correct';
       } else {
         if (view.model.has('_isAtLeastOneCorrectSelection')) {
           // Partially correct feedback is an option.
           classes = view.model.get('_isAtLeastOneCorrectSelection')
-            ? ' enhancedQuestion partially-correct'
-            : ' enhancedQuestion incorrect';
+            ? ' enhancedQuestion-popup partially-correct'
+            : ' enhancedQuestion-popup incorrect';
         } else {
-          classes = ' enhancedQuestion incorrect';
+          classes = ' enhancedQuestion-popup incorrect';
         }
       }
 
       if (view.model.get('_enhancedQuestion')._inlineFeedback._isEnabled) {
-
         this.inlineFeedbackView = new InlineFeedbackView({model:view.model});
         this.listenToOnce(view.model, 'change:_isSubmitted', this.removeInlineFeedbackView, this);
 

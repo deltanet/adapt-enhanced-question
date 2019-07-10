@@ -80,45 +80,8 @@
 		}
   }
 
-  .enhancedQuestion-popup-title {
-    margin-bottom: @notify-title-padding-bottom;
-    .item-title;
+	.notify-popup-title {
     text-align: center;
-    font-size: @component-title-font-size;
-  }
-
-  .enhancedQuestion-popup-body {
-    a {
-      text-decoration: underline;
-      color: @notify-text-color;
-    }
-
-    text-align: left;
-    .dir-rtl & {
-      text-align: right;
-    }
-  }
-
-  .enhancedQuestion-popup-buttons {
-    text-align: center;
-    clear: both;
-  }
-
-  .enhancedQuestion-popup-close {
-    background-color: @notify-button-color;
-    color: @notify-button-text-color;
-    padding: @button-padding-top @button-padding-right+10 @button-padding-bottom @button-padding-left+10;
-    margin-top: @notify-padding;
-    text-decoration: none;
-    display: inline-block;
-    border: none;
-    min-width: 100px;
-    .transition-all-colors;
-    .button-text;
-
-    .no-touch &:hover {
-      background-color: @notify-button-color-hover;
-      color: @notify-button-text-color-hover;
-    }
+    padding-right: 0 !important;
   }
 }
