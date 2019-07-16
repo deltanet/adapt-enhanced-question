@@ -73,6 +73,15 @@
 .enhancedQuestion-popup {
   .enhancedQuestion-popup-image {
     padding-bottom: @notify-padding;
+
+		@media all and (max-width: (@device-width-large + 20px)) {
+      padding-bottom: @notify-padding / 2;
+    }
+
+    @media all and (max-width: (@device-width-small + 20px)) {
+      padding-bottom: @notify-padding / 3;
+    }
+		
 		img {
 		    display: block;
 		    margin-left: auto;
