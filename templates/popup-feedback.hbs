@@ -18,8 +18,8 @@
 </div>
 {{/if}}
 <div class="notify-popup-buttons">
-	<button class="notify-popup-button enhancedQuestion-close-button" aria-label="{{_enhancedQuestion.close}}">
-		{{{_enhancedQuestion.close}}}
+	<button class="notify-popup-button enhancedQuestion-close-button" aria-label="{{#if _enhancedQuestion.close}}{{_enhancedQuestion.close}}{{else}}{{_globals._accessibility._ariaLabels.closePopup}}{{/if}}">
+		{{#if _enhancedQuestion.close}}{{{_enhancedQuestion.close}}}{{else}}{{{_globals._accessibility._ariaLabels.closePopup}}}{{/if}}
   </button>
 </div>
 {{a11y_wrap_focus}}
