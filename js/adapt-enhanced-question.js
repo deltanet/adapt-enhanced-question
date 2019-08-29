@@ -1,145 +1,138 @@
 define([
-    'coreJS/adapt',
-    './inline-feedbackView'
-],function(Adapt, InlineFeedbackView) {
+    'core/js/adapt',
+    './inline-feedbackView',
+    './popup-feedbackView'
+],function(Adapt, InlineFeedbackView, PopupFeedbackView) {
 
   var EnhancedQuestion = _.extend({
 
     initialize: function() {
-        this.listenToOnce(Adapt, "app:dataReady", this.onDataReady);
+      this.listenToOnce(Adapt, "app:dataReady", this.onDataReady);
+
+      this.popupView = null;
+      this.isPopupOpen = false;
     },
 
     onDataReady: function() {
-        this.setupEventListeners();
+      this.setupListeners();
     },
 
-    setupEventListeners: function() {
-        this.listenTo(Adapt, "componentView:postRender", this.onQuestionReady);
-        this.listenTo(Adapt, "questionView:showFeedback questionView:disabledFeedback", this.onShowFeedback);
+    setupListeners: function() {
+      this.listenTo(Adapt, "componentView:postRender", this.onQuestionReady);
+      this.listenTo(Adapt, "questionView:showFeedback questionView:disabledFeedback", this.onShowFeedback);
     },
 
     onShowFeedback: function(view) {
+      if (!view.model.get('_enhancedQuestion') || !view.model.get('_enhancedQuestion')._isEnabled) return;
+
       // Partly correct score change
-      if (view.model.get('_enhancedQuestion') && view.model.get('_enhancedQuestion')._isEnabled && view.model.get('_enhancedQuestion')._overidePartlyCorrect._isEnabled && view.model.get('_isAtLeastOneCorrectSelection') && !view.model.get('_isCorrect')) {
+      if (view.model.get('_enhancedQuestion')._overidePartlyCorrect._isEnabled && view.model.get('_isAtLeastOneCorrectSelection') && !view.model.get('_isCorrect')) {
 
-          view.model.set('_score', view.model.get('_enhancedQuestion')._overidePartlyCorrect._questionWeight);
-          view.model.set('_isCorrect', true);
+        view.model.set('_score', view.model.get('_enhancedQuestion')._overidePartlyCorrect._questionWeight);
+        view.model.set('_isCorrect', true);
 
-          $('.'+view.model.get('_id')).find('.buttons-marking-icon').removeClass('icon-cross');
-          $('.'+view.model.get('_id')).find('.buttons-marking-icon').addClass('icon-tick');
-
+        $('.'+view.model.get('_id')).find('.buttons-marking-icon').removeClass('icon-cross');
+        $('.'+view.model.get('_id')).find('.buttons-marking-icon').addClass('icon-tick');
       }
-      // Custom notify elements
-        if (view.model.get('_enhancedQuestion') && view.model.get('_enhancedQuestion')._isEnabled && view.model.get('_canShowFeedback')) {
-            // Set alert title
-            var feedbackTitle = "";
 
-            /// Feedback title
-            if (view.model.get('_enhancedQuestion')._feedbackTitle._isEnabled) {
-                // Correct
-                if (view.model.get('_isCorrect')) {
-                    feedbackTitle = view.model.get('_enhancedQuestion')._feedbackTitle.correct;
-                // Partly correct
-                } else if (view.model.get('_isAtLeastOneCorrectSelection')) {
-                    // Check attempts
-                    if (view.model.get('_attemptsLeft') === 0) {
-                      feedbackTitle = view.model.get('_enhancedQuestion')._feedbackTitle.partlyCorrect;
-                    } else {
-                      feedbackTitle = view.model.get('_enhancedQuestion')._feedbackTitle.partlyCorrectNotFinal;
-                    }
-                    // Incorrect
-                } else {
-                    // Check attempts
-                    if (view.model.get('_attemptsLeft') === 0) {
-                      feedbackTitle = view.model.get('_enhancedQuestion')._feedbackTitle.incorrect;
-                    } else {
-                      feedbackTitle = view.model.get('_enhancedQuestion')._feedbackTitle.incorrectNotFinal;
-                    }
-                }
+      if (!view.model.get('_canShowFeedback') || this.isPopupOpen) return;
 
-            } else {
-                feedbackTitle = view.model.get("feedbackTitle");
-            }
+      // Check for image
+      if (view.model.get('_enhancedQuestion')._feedbackIcons._isEnabled) {
+        if (view.model.get('_isCorrect')) {
+          view.model.set('image', view.model.get('_enhancedQuestion')._feedbackIcons._correctIcon);
+          view.model.set('alt', view.model.get('_enhancedQuestion')._feedbackIcons.correctAlt);
 
-            // Check for feedback icon
-            if (view.model.get('_enhancedQuestion')._feedbackIcons._isEnabled) {
-                var feedbackIconTitle = "";
-                if (view.model.get('_isCorrect')) {
-                  // Check for image alt tag
-                  if(view.model.get('_enhancedQuestion')._feedbackIcons.correctAlt && !view.model.get('_enhancedQuestion')._feedbackIcons.correctAlt == "") {
-                    feedbackIconTitle = "<div class=feedback-icon><img aria-label='"+view.model.get('_enhancedQuestion')._feedbackIcons.correctAlt+"' tabindex='0' src='"+view.model.get('_enhancedQuestion')._feedbackIcons._correctIcon+"'/></div>"+feedbackTitle;
-                  } else {
-                    feedbackIconTitle = "<div class=feedback-icon><img class='a11y-ignore' aria-hidden='true' tabindex='-1' src='"+view.model.get('_enhancedQuestion')._feedbackIcons._correctIcon+"'/></div>"+feedbackTitle;
-                  }
-                } else if (view.model.get('_isAtLeastOneCorrectSelection')) {
-                  // Check for image alt tag
-                  if(view.model.get('_enhancedQuestion')._feedbackIcons.partlyCorrectAlt && !view.model.get('_enhancedQuestion')._feedbackIcons.partlyCorrectAlt == "") {
-                    feedbackIconTitle = "<div class=feedback-icon><img aria-label='"+view.model.get('_enhancedQuestion')._feedbackIcons.partlyCorrectAlt+"' tabindex='0' src='"+view.model.get('_enhancedQuestion')._feedbackIcons._partlyCorrectIcon+"'/></div>"+feedbackTitle;
-                  } else {
-                    feedbackIconTitle = "<div class=feedback-icon><img class='a11y-ignore' aria-hidden='true' tabindex='-1' src='"+view.model.get('_enhancedQuestion')._feedbackIcons._partlyCorrectIcon+"'/></div>"+feedbackTitle;
-                  }
-                } else {
-                  // Check for image alt tag
-                  if(view.model.get('_enhancedQuestion')._feedbackIcons.incorrectAlt && !view.model.get('_enhancedQuestion')._feedbackIcons.incorrectAlt == "") {
-                    feedbackIconTitle = "<div class=feedback-icon><img aria-label='"+view.model.get('_enhancedQuestion')._feedbackIcons.incorrectAlt+"' tabindex='0' src='"+view.model.get('_enhancedQuestion')._feedbackIcons._incorrectIcon+"'/></div>"+feedbackTitle;
-                  } else {
-                    feedbackIconTitle = "<div class=feedback-icon><img class='a11y-ignore' aria-hidden='true' tabindex='-1' src='"+view.model.get('_enhancedQuestion')._feedbackIcons._incorrectIcon+"'/></div>"+feedbackTitle;
-                  }
-                }
-                feedbackTitle = feedbackIconTitle;
-            }
+        } else if (view.model.get('_isAtLeastOneCorrectSelection')) {
+          view.model.set('image', view.model.get('_enhancedQuestion')._feedbackIcons._partlyCorrectIcon);
+          view.model.set('alt', view.model.get('_enhancedQuestion')._feedbackIcons.partlyCorrectAlt);
 
-            var buttonText = (view.model.get('_enhancedQuestion').close) ? view.model.get('_enhancedQuestion').close : Adapt.course.get('_globals')._accessibility._ariaLabels.closePopup;
-
-            // Set up new notify object
-            var alertObject = {
-                title: feedbackTitle,
-                body: view.model.get("feedbackMessage"),
-                _prompts:[
-                    {
-                        promptText: buttonText
-                    }
-                ],
-            };
-
-            if (view.model.has('_isCorrect')) {
-                // Attach specific classes so that feedback can be styled.
-                if (view.model.get('_isCorrect')) {
-                    alertObject._classes = 'correct';
-                } else {
-                    if (view.model.has('_isAtLeastOneCorrectSelection')) {
-                        // Partially correct feedback is an option.
-                        alertObject._classes = view.model.get('_isAtLeastOneCorrectSelection')
-                            ? 'partially-correct'
-                            : 'incorrect';
-                    } else {
-                        alertObject._classes = 'incorrect';
-                    }
-                }
-            }
-
-            if (!view.model.get('_enhancedQuestion')._inlineFeedback._isEnabled) {
-              Adapt.trigger('notify:prompt', alertObject);
-            }
-
+        } else {
+          view.model.set('image', view.model.get('_enhancedQuestion')._feedbackIcons._incorrectIcon);
+          view.model.set('alt', view.model.get('_enhancedQuestion')._feedbackIcons.incorrectAlt);
         }
+      }
 
+      // Check for title
+      if (view.model.get('_enhancedQuestion')._feedbackTitle._isEnabled) {
+        // Correct
+        if (view.model.get('_isCorrect')) {
+          view.model.set('feedbackTitle', view.model.get('_enhancedQuestion')._feedbackTitle.correct);
+        // Partly correct
+        } else if (view.model.get('_isAtLeastOneCorrectSelection')) {
+          // Check attempts
+          if (view.model.get('_attemptsLeft') === 0) {
+            view.model.set('feedbackTitle', view.model.get('_enhancedQuestion')._feedbackTitle.partlyCorrect);
+          } else {
+            view.model.set('feedbackTitle', view.model.get('_enhancedQuestion')._feedbackTitle.partlyCorrectNotFinal);
+          }
+        // Incorrect
+        } else {
+          // Check attempts
+          if (view.model.get('_attemptsLeft') === 0) {
+            view.model.set('feedbackTitle', view.model.get('_enhancedQuestion')._feedbackTitle.incorrect);
+          } else {
+            view.model.set('feedbackTitle', view.model.get('_enhancedQuestion')._feedbackTitle.incorrectNotFinal);
+          }
+        }
+      } else {
+        view.model.set('feedbackTitle', view.model.get("feedbackTitle"));
+      }
+
+      Adapt.trigger('audio:stopAllChannels');
+
+      var classes = ' enhancedQuestion-popup';
+
+      // Attach specific classes so that feedback can be styled.
+      if (view.model.get('_isCorrect')) {
+        classes = ' enhancedQuestion-popup correct';
+      } else {
+        if (view.model.has('_isAtLeastOneCorrectSelection')) {
+          // Partially correct feedback is an option.
+          classes = view.model.get('_isAtLeastOneCorrectSelection')
+            ? ' enhancedQuestion-popup partially-correct'
+            : ' enhancedQuestion-popup incorrect';
+        } else {
+          classes = ' enhancedQuestion-popup incorrect';
+        }
+      }
+
+      if (view.model.get('_enhancedQuestion')._inlineFeedback._isEnabled) {
+        this.inlineFeedbackView = new InlineFeedbackView({model:view.model});
+        this.listenToOnce(view.model, 'change:_isSubmitted', this.removeInlineFeedbackView, this);
+
+      } else {
+        this.isPopupOpen = true;
+
+        this.popupView = new PopupFeedbackView({
+            model: view.model
+        });
+
+        Adapt.trigger("notify:popup", {
+            _view: this.popupView,
+            _isCancellable: true,
+            _showCloseButton: false,
+            _closeOnBackdrop: true,
+            _classes: classes
+        });
+        this.listenToOnce(Adapt, 'popup:closed', this.onPopupClosed);
+      }
+    },
+
+    onPopupClosed: function() {
+      this.isPopupOpen = false;
+    },
+
+    removeInlineFeedbackView: function(model) {
+      this.inlineFeedbackView.remove();
+      $('.'+model.get('_id')).find('.inline-feedback').remove();
     },
 
     onQuestionReady: function(view) {
-
-        if (view.model.get('_enhancedQuestion') && view.model.get('_enhancedQuestion')._isEnabled) {
-
-            // Add class to component
-            $('.'+view.model.get('_id')).addClass('enhanced-question-enabled');
-
-            /// Inline feedback
-            if (view.model.get('_enhancedQuestion')._inlineFeedback._isEnabled && view.model.get('_canShowFeedback')) {
-                new InlineFeedbackView({model:view.model});
-            }
-
-        }
-
+      if (view.model.get('_enhancedQuestion') && view.model.get('_enhancedQuestion')._isEnabled) {
+        // Add class to component
+        $('.'+view.model.get('_id')).addClass('enhanced-question-enabled');
+      }
     }
 
   }, Backbone.Events);
@@ -148,4 +141,4 @@ define([
 
     return EnhancedQuestion;
 
-})
+});
