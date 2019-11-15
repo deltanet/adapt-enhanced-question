@@ -25,6 +25,24 @@ define([
     onShowFeedback: function(view) {
       if (!view.model.get('_enhancedQuestion') || !view.model.get('_enhancedQuestion')._isEnabled) return;
 
+      if (view.model.get('_isCorrect')) {
+        if (!view.model.get('_feedback').correct && !view.model.get('_enhancedQuestion')._feedbackTitle.correct) return;
+      } else if (view.model.get('_isAtLeastOneCorrectSelection')) {
+        // Check attempts
+        if (view.model.get('_attemptsLeft') === 0) {
+          if (!view.model.get('_feedback')._partlyCorrect.final && !view.model.get('_enhancedQuestion')._feedbackTitle.partlyCorrect) return;
+        } else {
+          if (!view.model.get('_feedback')._partlyCorrect.notFinal && !view.model.get('_enhancedQuestion')._feedbackTitle.partlyCorrectNotFinal) return;
+        }
+      } else {
+        // Check attempts
+        if (view.model.get('_attemptsLeft') === 0) {
+          if (!view.model.get('_feedback')._incorrect.final && !view.model.get('_enhancedQuestion')._feedbackTitle.incorrect) return;
+        } else {
+          if (!view.model.get('_feedback')._incorrect.notFinal && !view.model.get('_enhancedQuestion')._feedbackTitle.incorrectNotFinal) return;
+        }
+      }
+
       // Partly correct score change
       if (view.model.get('_enhancedQuestion')._overidePartlyCorrect._isEnabled && view.model.get('_isAtLeastOneCorrectSelection') && !view.model.get('_isCorrect')) {
 
