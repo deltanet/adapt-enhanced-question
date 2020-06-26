@@ -15,9 +15,11 @@ define([
         render: function () {
           var data = this.model.toJSON();
           var template = Handlebars.templates["inline-feedback"];
-          $(this.el).html(template(data)).appendTo('.'+this.model.get('_id')+">.component-inner");
+          $(this.el).html(template(data)).insertAfter('.'+this.model.get('_id')+" > .component-inner > .buttons");
 
           $('.'+this.model.get('_id')).addClass('inline-feedback-enabled');
+
+          if (!this.model.get('_canShowMarking')) return;
 
           // Hide default icon
           $('.'+this.model.get('_id')).find('.buttons-cluster > .buttons-marking-icon').css('display','none');

@@ -1,10 +1,12 @@
 {{! make the _globals object in course.json available to this template}}
 {{import_globals}}
+{{#if _canShowMarking}}
 <div class="feedback-icon">
   <div class="buttons-marking-icon icon"></div>
 </div>
-<div class="feedback">
-  {{#if feedbackTitle}}
+{{/if}}
+<div class="feedback{{#if _canShowMarking}} marking-enabled{{/if}}">
+  {{#if _enhancedQuestion._feedbackTitle._isEnabled}}
   <div class="feedback-title">
     {{{compile feedbackTitle}}}
   </div>

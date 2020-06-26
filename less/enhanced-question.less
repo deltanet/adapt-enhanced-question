@@ -1,23 +1,25 @@
 .enhanced-question-enabled {
-	.feedback-icon {
-		position: relative;
-		float: left;
-      .dir-rtl & {
-        float: right;
-      }
-	}
-
-	.feedback {
-		padding-left: 80px;
-    .dir-rtl & {
-      padding-left: 0px;
-      padding-right: 80px;
-    }
-	}
 
 	&.inline-feedback-enabled {
+		.feedback-icon {
+			position: relative;
+			float: left;
+			.dir-rtl & {
+				float: right;
+			}
+		}
+
+		.feedback {
+			&.marking-enabled {
+				padding-left: 80px;
+				.dir-rtl & {
+					padding-left: 0px;
+					padding-right: 80px;
+				}
+			}
+		}
+
 		.buttons {
-			margin-bottom: 0px;
 			text-align: center;
 			button {
 				float: none;
@@ -32,8 +34,7 @@
 		}
 		.inline-feedback {
 			background-color: @component-background-color;
-			padding-top: @component-padding;
-			padding-bottom: @component-padding;
+			padding: @component-padding;
 		}
 	}
 
@@ -81,7 +82,7 @@
     @media all and (max-width: (@device-width-small + 20px)) {
       padding-bottom: @notify-padding / 3;
     }
-		
+
 		img {
 		    display: block;
 		    margin-left: auto;
