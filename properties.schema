@@ -50,10 +50,34 @@
                   "help": "Button label text for the button to close the feedback.",
                   "translatable": true
                 },
+                "_optionScoring": {
+                  "type": "object",
+                  "required": false,
+                  "legend": "Option Scoring",
+                  "properties": {
+                    "_isEnabled": {
+                      "type": "boolean",
+                      "required": true,
+                      "default": false,
+                      "title": "Is Enabled",
+                      "inputType": "Checkbox",
+                      "validators": [],
+                      "help": "If enabled, the question score will be based on the number of correct answers multiplied by the option score set below."
+                    },
+                    "_optionWeight": {
+                      "type": "number",
+                      "required": true,
+                      "default": 1,
+                      "title": "Option score",
+                      "inputType": "Number",
+                      "validators": ["required", "number"]
+                    }
+                  }
+                },
                 "_overidePartlyCorrect": {
                   "type":"object",
                   "required": true,
-                  "title": "Change partly correct score",
+                  "legend": "Partly Correct Score",
                   "properties":{
                     "_isEnabled": {
                       "type":"boolean",
@@ -77,7 +101,7 @@
                 "_inlineFeedback": {
                   "type":"object",
                   "required": true,
-                  "title": "Inline feedback",
+                  "legend": "Inline Feedback",
                   "properties":{
                     "_isEnabled": {
                       "type":"boolean",
@@ -93,7 +117,7 @@
                 "_feedbackIcons": {
                   "type":"object",
                   "required": true,
-                  "title": "Feedback graphic",
+                  "legend": "Feedback Graphics",
                   "properties":{
                     "_isEnabled": {
                       "type":"boolean",
@@ -166,7 +190,7 @@
                 "_feedbackTitle": {
                   "type":"object",
                   "required": true,
-                  "title": "Feedback titles",
+                  "legend": "Feedback Titles",
                   "properties":{
                     "_isEnabled": {
                       "type":"boolean",

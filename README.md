@@ -22,13 +22,19 @@ The Enhanced Question attribute group contains values for **_isEnabled**, **_ove
 
 >**_isEnabled** (boolean):  Turns on and off the **Enhanced Question** extension. Can be set to disable **Enhanced Question** when not required.  
 
+>**close** (string): This text becomes the close button text.  
+
 >**_overidePartlyCorrect** (object):  This `_overidePartlyCorrect` attributes group stores the properties for when a question's score is changed if it is partly correct. It contains values for **_isEnabled**, and **_questionWeight**.  
 
 >>**_isEnabled** (boolean): If `enabled`, the partly correct score will be changed.  
 
->>**close** (string): This text becomes the close button text.  
-
 >>**_questionWeight** (number): Defines the new question weight for a partly correct answer.  
+
+>**_optionScoring** (object):  This `_optionScoring` attributes group stores the properties for when a question's score is changed depending on how many options are correct. It contains values for **_isEnabled**, and **_optionWeight**.  
+
+>>**_isEnabled** (boolean): If `enabled`, the score will total up how many options are correct.  
+
+>>**_optionWeight** (number): Defines the score for the option.  
 
 >**_feedbackIcons** (object):  This `_feedbackIcons` attributes group stores the properties for when an image is added to the feedback. It contains values for **_isEnabled**, **_correctIcon**, **_partlyCorrectIcon**, and **_incorrectIcon**.  
 
@@ -69,7 +75,7 @@ The Enhanced Question attribute group contains values for **_isEnabled**, **_ove
 This cannot be used when adapt-contrib-tutor is installed, as there are issues with adapt-contrib-trickle events, and multiple feedback popups will open.  
 
 ----------------------------
-**Version number:**  3.0.2    
+**Version number:**  3.1.0    
 **Framework versions supported:**  4+    
 **Author / maintainer:** DeltaNet with [contributors](https://github.com/deltanet/adapt-enhanced-question/graphs/contributors)     
 **Accessibility support:** Yes  

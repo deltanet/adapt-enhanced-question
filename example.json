@@ -7,6 +7,10 @@
 		"_isEnabled": true,
 		"_questionWeight": 0.5
 	},
+	"_optionScoring": {
+		"_isEnabled": true,
+		"_optionWeight": 1
+	},
 	"_feedbackIcons": {
 		"_isEnabled": true,
 		"_correctIcon": "adapt/css/assets/correct-icon.png",
