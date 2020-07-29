@@ -50,30 +50,6 @@
                   "help": "Button label text for the button to close the feedback.",
                   "translatable": true
                 },
-                "_optionScoring": {
-                  "type": "object",
-                  "required": false,
-                  "legend": "Option Scoring",
-                  "properties": {
-                    "_isEnabled": {
-                      "type": "boolean",
-                      "required": true,
-                      "default": false,
-                      "title": "Is Enabled",
-                      "inputType": "Checkbox",
-                      "validators": [],
-                      "help": "If enabled, the question score will be based on the number of correct answers multiplied by the option score set below."
-                    },
-                    "_optionWeight": {
-                      "type": "number",
-                      "required": true,
-                      "default": 1,
-                      "title": "Option score",
-                      "inputType": "Number",
-                      "validators": ["required", "number"]
-                    }
-                  }
-                },
                 "_overidePartlyCorrect": {
                   "type":"object",
                   "required": true,

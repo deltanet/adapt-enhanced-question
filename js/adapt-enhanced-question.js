@@ -45,17 +45,11 @@ define([
 
       // Partly correct score change
       if (view.model.get('_enhancedQuestion')._overidePartlyCorrect._isEnabled && view.model.get('_isAtLeastOneCorrectSelection') && !view.model.get('_isCorrect')) {
-
         view.model.set('_score', view.model.get('_enhancedQuestion')._overidePartlyCorrect._questionWeight);
         view.model.set('_isCorrect', true);
 
         $('.'+view.model.get('_id')).find('.buttons-marking-icon').removeClass('icon-cross');
         $('.'+view.model.get('_id')).find('.buttons-marking-icon').addClass('icon-tick');
-      }
-
-      // Option score change
-      if (view.model.get('_enhancedQuestion')._optionScoring && view.model.get('_enhancedQuestion')._optionScoring._isEnabled && view.model.get('_isAtLeastOneCorrectSelection')) {
-        view.model.set('_score', view.model.get('_enhancedQuestion')._optionScoring._optionWeight * view.model.get('_numberOfCorrectAnswers'));
       }
 
       if (!view.model.get('_canShowFeedback') || this.isPopupOpen) return;
