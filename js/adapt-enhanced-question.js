@@ -1,28 +1,28 @@
 define([
-    'core/js/adapt',
-    './inline-feedbackView',
-    './popup-feedbackView'
-],function(Adapt, InlineFeedbackView, PopupFeedbackView) {
+  'core/js/adapt',
+  './inline-feedbackView',
+  './popup-feedbackView'
+],function (Adapt, InlineFeedbackView, PopupFeedbackView) {
 
   var EnhancedQuestion = _.extend({
 
-    initialize: function() {
-      this.listenToOnce(Adapt, "app:dataReady", this.onDataReady);
+    initialize: function () {
+      this.listenToOnce(Adapt, 'app:dataReady', this.onDataReady);
 
       this.popupView = null;
       this.isPopupOpen = false;
     },
 
-    onDataReady: function() {
+    onDataReady: function () {
       this.setupListeners();
     },
 
-    setupListeners: function() {
-      this.listenTo(Adapt, "componentView:postRender", this.onQuestionReady);
-      this.listenTo(Adapt, "questionView:showFeedback questionView:disabledFeedback", this.onShowFeedback);
+    setupListeners: function () {
+      this.listenTo(Adapt, 'componentView:postRender', this.onQuestionReady);
+      this.listenTo(Adapt, 'questionView:showFeedback questionView:disabledFeedback', this.onShowFeedback);
     },
 
-    onShowFeedback: function(view) {
+    onShowFeedback: function (view) {
       if (!view.model.get('_enhancedQuestion') || !view.model.get('_enhancedQuestion')._isEnabled) return;
 
       if (view.model.get('_isCorrect')) {
@@ -93,24 +93,24 @@ define([
           }
         }
       } else {
-        view.model.set('feedbackTitle', view.model.get("feedbackTitle"));
+        view.model.set('feedbackTitle', view.model.get('feedbackTitle'));
       }
 
       Adapt.trigger('audio:stopAllChannels');
 
-      var classes = ' enhancedQuestion-popup';
+      var classes = ' enhancedQuestion__popup';
 
       // Attach specific classes so that feedback can be styled.
       if (view.model.get('_isCorrect')) {
-        classes = ' enhancedQuestion-popup correct';
+        classes = ' enhancedQuestion__popup correct';
       } else {
         if (view.model.has('_isAtLeastOneCorrectSelection')) {
           // Partially correct feedback is an option.
           classes = view.model.get('_isAtLeastOneCorrectSelection')
-            ? ' enhancedQuestion-popup partially-correct'
-            : ' enhancedQuestion-popup incorrect';
+            ? ' enhancedQuestion__popup partially-correct'
+            : ' enhancedQuestion__popup incorrect';
         } else {
-          classes = ' enhancedQuestion-popup incorrect';
+          classes = ' enhancedQuestion__popup incorrect';
         }
       }
 
@@ -122,40 +122,40 @@ define([
         this.isPopupOpen = true;
 
         this.popupView = new PopupFeedbackView({
-            model: view.model
+          model: view.model
         });
 
-        Adapt.trigger("notify:popup", {
-            _view: this.popupView,
-            _isCancellable: true,
-            _showCloseButton: false,
-            _closeOnBackdrop: true,
-            _classes: classes
+        Adapt.notify.popup({
+          _view: this.popupView,
+          _isCancellable: true,
+          _showCloseButton: false,
+          _closeOnBackdrop: true,
+          _classes: classes
         });
         this.listenToOnce(Adapt, 'popup:closed', this.onPopupClosed);
       }
     },
 
-    onPopupClosed: function() {
+    onPopupClosed: function () {
       this.isPopupOpen = false;
     },
 
-    removeInlineFeedbackView: function(model) {
+    removeInlineFeedbackView: function (model) {
       this.inlineFeedbackView.remove();
-      $('.'+model.get('_id')).find('.inline-feedback').remove();
+      $('.'+model.get('_id')).find('.inlineFeedback').remove();
     },
 
-    onQuestionReady: function(view) {
+    onQuestionReady: function (view) {
       if (view.model.get('_enhancedQuestion') && view.model.get('_enhancedQuestion')._isEnabled) {
         // Add class to component
-        $('.'+view.model.get('_id')).addClass('enhanced-question-enabled');
+        $('.'+view.model.get('_id')).addClass('enhancedQuestion-enabled');
       }
     }
 
   }, Backbone.Events);
 
-    EnhancedQuestion.initialize();
+  EnhancedQuestion.initialize();
 
-    return EnhancedQuestion;
+  return EnhancedQuestion;
 
 });
