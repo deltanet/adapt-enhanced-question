@@ -130,7 +130,7 @@ define([
           _isCancellable: true,
           _showCloseButton: false,
           _closeOnBackdrop: true,
-          _classes: classes
+          _classes: view.model.get('_classes') + classes
         });
         this.listenToOnce(Adapt, 'popup:closed', this.onPopupClosed);
       }
