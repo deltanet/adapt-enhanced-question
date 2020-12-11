@@ -96,6 +96,11 @@ define([
         view.model.set('feedbackTitle', view.model.get('feedbackTitle'));
       }
 
+      // Ensure 'Show feedback' button is displayed
+      if (view.model.get('feedbackMessage') == "") {
+        view.model.set('feedbackMessage', " ");
+      }
+
       Adapt.trigger('audio:stopAllChannels');
 
       var classes = ' enhancedQuestion__popup';
