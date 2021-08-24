@@ -1,40 +1,38 @@
 define([
-    'core/js/adapt'
-],function(Adapt) {
+  'core/js/adapt'
+],function (Adapt) {
 
-    var InlineFeedbackView = Backbone.View.extend({
+  var InlineFeedbackView = Backbone.View.extend({
 
-        className: "inline-feedback",
+    className: "inlineFeedback",
 
-        initialize: function () {
-          this.listenTo(Adapt, 'remove', this.remove);
+    initialize: function () {
+      this.listenTo(Adapt, 'remove', this.remove);
 
-          this.render();
-        },
+      this.render();
+    },
 
-        render: function () {
-          var data = this.model.toJSON();
-          var template = Handlebars.templates["inline-feedback"];
-          $(this.el).html(template(data)).insertAfter('.'+this.model.get('_id')+" > .component-inner > .buttons");
+    render: function () {
+      var data = this.model.toJSON();
+      var template = Handlebars.templates["inline-feedback"];
 
-          $('.'+this.model.get('_id')).addClass('inline-feedback-enabled');
+      $(this.el).html(template(data)).insertAfter('.'+this.model.get('_id')+" > .component__inner > .btn__container");
 
-          if (!this.model.get('_canShowMarking')) return;
+      $('.'+this.model.get('_id')).addClass('inlineFeedback-enabled');
 
-          // Hide default icon
-          $('.'+this.model.get('_id')).find('.buttons-cluster > .buttons-marking-icon').css('display','none');
+      if (!this.model.get('_canShowMarking')) return;
 
-          // Set appropriate icon
-          if (this.model.get('_isCorrect')) {
-            $('.'+this.model.get('_id')).find('.buttons-marking-icon').addClass('icon-tick');
-          } else if (this.model.get('_isAtLeastOneCorrectSelection') && this.model.get('_enhancedQuestion')._overidePartlyCorrect._isEnabled) {
-            $('.'+this.model.get('_id')).find('.buttons-marking-icon').addClass('icon-tick');
-          } else {
-            $('.'+this.model.get('_id')).find('.buttons-marking-icon').addClass('icon-cross');
-          }
-        }
-    });
+      if (this.model.get('_isSubmitted')) {
+        $('.'+this.model.get('_id')).find('.js-btn-feedback').addClass('is-disabled').attr("disabled", "disabled");
+      }
 
-    return InlineFeedbackView;
+      // Change icon for partlyCorrect if it is being overidden
+      if (!this.model.get('_isCorrect') && this.model.get('_isAtLeastOneCorrectSelection') && this.model.get('_enhancedQuestion')._overidePartlyCorrect._isEnabled) {
+        $('.'+this.model.get('_id')).find('.js-btn-marking').removeClass('is-incorrect').addClass('is-correct');
+      }
+    }
+  });
+
+  return InlineFeedbackView;
 
 });
