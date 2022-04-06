@@ -11,8 +11,12 @@
 		"_isEnabled": true,
 		"_correctIcon": "adapt/css/assets/correct-icon.png",
 		"correctAlt": "",
+		"_partlyCorrectNotFinalIcon": "adapt/css/assets/partlyCorrect-icon.png",
+		"partlyCorrectNotFinalAlt": "",
 		"_partlyCorrectIcon": "adapt/css/assets/partlyCorrect-icon.png",
 		"partlyCorrectAlt": "",
+		"_incorrectNotFinalIcon": "adapt/css/assets/incorrect-icon.png",
+		"incorrectNotFinalAlt": "",
 		"_incorrectIcon": "adapt/css/assets/incorrect-icon.png",
 		"incorrectAlt": ""
 	},

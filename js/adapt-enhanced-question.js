@@ -54,17 +54,30 @@ class EnhancedQuestion extends Backbone.Controller {
 
     // Check for image
     if (view.model.get('_enhancedQuestion')._feedbackIcons._isEnabled) {
+      // Correct
       if (view.model.get('_isCorrect')) {
         view.model.set('image', view.model.get('_enhancedQuestion')._feedbackIcons._correctIcon);
         view.model.set('alt', view.model.get('_enhancedQuestion')._feedbackIcons.correctAlt);
-
+      // Partly correct
       } else if (view.model.get('_isAtLeastOneCorrectSelection')) {
-        view.model.set('image', view.model.get('_enhancedQuestion')._feedbackIcons._partlyCorrectIcon);
-        view.model.set('alt', view.model.get('_enhancedQuestion')._feedbackIcons.partlyCorrectAlt);
-
+        // Check attempts
+        if (view.model.get('_attemptsLeft') === 0) {
+          view.model.set('image', view.model.get('_enhancedQuestion')._feedbackIcons._partlyCorrectIcon);
+          view.model.set('alt', view.model.get('_enhancedQuestion')._feedbackIcons.partlyCorrectAlt);
+        } else {
+          view.model.set('image', view.model.get('_enhancedQuestion')._feedbackIcons._partlyCorrectNotFinalIcon);
+          view.model.set('alt', view.model.get('_enhancedQuestion')._feedbackIcons.partlyCorrectNotFinalAlt);
+        }
+      // Incorrect
       } else {
-        view.model.set('image', view.model.get('_enhancedQuestion')._feedbackIcons._incorrectIcon);
-        view.model.set('alt', view.model.get('_enhancedQuestion')._feedbackIcons.incorrectAlt);
+        // Check attempts
+        if (view.model.get('_attemptsLeft') === 0) {
+          view.model.set('image', view.model.get('_enhancedQuestion')._feedbackIcons._incorrectIcon);
+          view.model.set('alt', view.model.get('_enhancedQuestion')._feedbackIcons.incorrectAlt);
+        } else {
+          view.model.set('image', view.model.get('_enhancedQuestion')._feedbackIcons._incorrectNotFinalIcon);
+          view.model.set('alt', view.model.get('_enhancedQuestion')._feedbackIcons.incorrectNotFinalAlt);
+        }
       }
     }
 

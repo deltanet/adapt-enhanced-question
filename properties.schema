@@ -108,7 +108,7 @@
                       "type":"string",
                       "required": true,
                       "default": "",
-                      "title": "Correct graphic",
+                      "title": "Correct Graphic",
                       "inputType": "Asset:image",
                       "validators": [],
                       "help": "Select a graphic to be used for the correct feedback."
@@ -117,10 +117,29 @@
                       "type": "string",
                       "required": false,
                       "default": "",
-                      "title": "Correct graphic Alt text",
+                      "title": "Correct Alt text",
                       "inputType": "Text",
                       "validators": [],
                       "help": "Alternative text for the correct feedback graphic.",
+                      "translatable": true
+                    },
+                    "_partlyCorrectNotFinalIcon": {
+                      "type":"string",
+                      "required": true,
+                      "default": "",
+                      "title": "Partly Correct Not Final Graphic",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Select a graphic to be used for the partly correct feedback for any attempt apart from the last attempt."
+                    },
+                    "partlyCorrectNotFinalAlt": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "Partly Correct Not Final Alt text",
+                      "inputType": "Text",
+                      "validators": [],
+                      "help": "Alternative text for the partly correct feedback graphic for any attempt apart from the last attempt.",
                       "translatable": true
                     },
                     "_partlyCorrectIcon": {
@@ -136,17 +155,36 @@
                       "type": "string",
                       "required": false,
                       "default": "",
-                      "title": "Partly correct graphic Alt text",
+                      "title": "Partly Correct Alt text",
                       "inputType": "Text",
                       "validators": [],
                       "help": "Alternative text for the partly correct feedback graphic.",
+                      "translatable": true
+                    },
+                    "_incorrectNotFinalIcon": {
+                      "type":"string",
+                      "required": true,
+                      "default": "",
+                      "title": "Incorrect Not Final Graphic",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Select a graphic to be used for the incorrect feedback for any attempt apart from the last attempt."
+                    },
+                    "incorrectNotFinalAlt": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "Incorrect Not Final Alt text",
+                      "inputType": "Text",
+                      "validators": [],
+                      "help": "Alternative text for the incorrect feedback graphic for any attempt apart from the last attempt.",
                       "translatable": true
                     },
                     "_incorrectIcon": {
                       "type":"string",
                       "required": true,
                       "default": "",
-                      "title": "Incorrect graphic",
+                      "title": "Incorrect Graphic",
                       "inputType": "Asset:image",
                       "validators": [],
                       "help": "Select a graphic to be used for the incorrect feedback."
@@ -155,7 +193,7 @@
                       "type": "string",
                       "required": false,
                       "default": "",
-                      "title": "Incorrect graphic Alt text",
+                      "title": "Incorrect Alt text",
                       "inputType": "Text",
                       "validators": [],
                       "help": "Alternative text for the incorrect feedback graphic.",

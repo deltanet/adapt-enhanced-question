@@ -30,7 +30,7 @@ The Enhanced Question attribute group contains values for **_isEnabled**, **_ove
 
 >>**_questionWeight** (number): Defines the new question weight for a partly correct answer.  
 
->**_feedbackIcons** (object):  This `_feedbackIcons` attributes group stores the properties for when an image is added to the feedback. It contains values for **_isEnabled**, **_correctIcon**, **_partlyCorrectIcon**, and **_incorrectIcon**.  
+>**_feedbackIcons** (object):  This `_feedbackIcons` attributes group stores the properties for when an image is added to the feedback. It contains values for **_isEnabled**, **_correctIcon**, **correctAlt**, **_partlyCorrectNotFinalIcon**, **partlyCorrectNotFinalAlt**, **_partlyCorrectIcon**, **partlyCorrectAlt**, **_incorrectNotFinalIcon**, **incorrectNotFinalAlt**, **_incorrectIcon**, and **incorrectAlt**.  
 
 >>**_isEnabled** (boolean): If `enabled`, the specified image will be shown with the relevant feedback.  
 
@@ -38,9 +38,17 @@ The Enhanced Question attribute group contains values for **_isEnabled**, **_ove
 
 >>**correctAlt** (string): This text becomes the correct feedback image’s `alt` attribute.  
 
+>>**_partlyCorrectNotFinalIcon** (string): File name (including path) of the image for the partly correct feedback when there are attempts remaining. Path should be relative to the *src* folder.  
+
+>>**partlyCorrectNotFinalAlt** (string): This text becomes the partly correct feedback image’s `alt` attribute when there are attempts remaining.  
+
 >>**_partlyCorrectIcon** (string): File name (including path) of the image for the partly correct feedback. Path should be relative to the *src* folder.  
 
 >>**partlyCorrectAlt** (string): This text becomes the partly correct feedback image’s `alt` attribute.  
+
+>>**_incorrectNotFinalIcon** (string): File name (including path) of the image for the incorrect feedback when there are attempts remaining. Path should be relative to the *src* folder.  
+
+>>**incorrectNotFinalAlt** (string): This text becomes the incorrect feedback image’s `alt` attribute when there are attempts remaining.  
 
 >>**_incorrectIcon** (string): File name (including path) of the image for the incorrect feedback. Path should be relative to the *src* folder.  
 
