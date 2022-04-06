@@ -1,31 +1,28 @@
-define([
-  'core/js/adapt'
-], function (Adapt) {
+import Adapt from 'core/js/adapt';
 
-  var PopupFeedbackView = Backbone.View.extend({
+export default class PopupFeedbackView extends Backbone.View {
 
-    className: "enhancedQuestion__popup",
+  className() {
+    return 'enhancedQuestion__popup';
+  }
 
-    events: {
+  events() {
+    return {
       'click .js-enhancedQuestion-close-btn-click': 'closePopup'
-    },
+    };
+  }
 
-    initialize: function() {
-      this.render();
-    },
+  initialize() {
+    this.render();
+  }
 
-    render: function() {
-      var data = this.model.toJSON();
-      var template = Handlebars.templates["popup-feedback"];
-      this.$el.html(template(data));
-    },
+  render() {
+    const data = this.model.toJSON();
+    const template = Handlebars.templates["popup-feedback"];
+    this.$el.html(template(data));
+  }
 
-    closePopup: function (event) {
-      Adapt.trigger('notify:close');
-    }
-
-  });
-
-  return PopupFeedbackView;
-
-});
+  closePopup(event) {
+    Adapt.trigger('notify:close');
+  }
+}
