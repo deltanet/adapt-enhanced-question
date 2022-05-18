@@ -52,7 +52,7 @@ class EnhancedQuestion extends Backbone.Controller {
 
     if (!view.model.get('_canShowFeedback') || this.isPopupOpen) return;
 
-    // Check for image
+    // Check for icons
     if (view.model.get('_enhancedQuestion')._feedbackIcons._isEnabled) {
       // Correct
       if (view.model.get('_isCorrect')) {
@@ -105,6 +105,35 @@ class EnhancedQuestion extends Backbone.Controller {
       }
     } else {
       view.model.set('feedbackTitle', view.model.get('feedbackTitle'));
+    }
+
+    // Check for graphic
+    if (view.model.get('_enhancedQuestion')._graphic._isEnabled) {
+      // Correct
+      if (view.model.get('_isCorrect')) {
+        view.model.set('graphic', view.model.get('_enhancedQuestion')._graphic._correct);
+        view.model.set('graphicAlt', view.model.get('_enhancedQuestion')._graphic.correctAlt);
+      // Partly correct
+      } else if (view.model.get('_isAtLeastOneCorrectSelection')) {
+        // Check attempts
+        if (view.model.get('_attemptsLeft') === 0) {
+          view.model.set('graphic', view.model.get('_enhancedQuestion')._graphic._partlyCorrect);
+          view.model.set('graphicAlt', view.model.get('_enhancedQuestion')._graphic.partlyCorrectAlt);
+        } else {
+          view.model.set('graphic', view.model.get('_enhancedQuestion')._graphic._partlyCorrectNotFinal);
+          view.model.set('graphicAlt', view.model.get('_enhancedQuestion')._graphic.partlyCorrectNotFinalAlt);
+        }
+      // Incorrect
+      } else {
+        // Check attempts
+        if (view.model.get('_attemptsLeft') === 0) {
+          view.model.set('graphic', view.model.get('_enhancedQuestion')._graphic._incorrect);
+          view.model.set('graphicAlt', view.model.get('_enhancedQuestion')._graphic.incorrectAlt);
+        } else {
+          view.model.set('graphic', view.model.get('_enhancedQuestion')._graphic._incorrectNotFinal);
+          view.model.set('graphicAlt', view.model.get('_enhancedQuestion')._graphic.incorrectNotFinalAlt);
+        }
+      }
     }
 
     // Ensure 'Show feedback' button is displayed

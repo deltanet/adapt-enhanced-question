@@ -72,12 +72,36 @@ The Enhanced Question attribute group contains values for **_isEnabled**, **_ove
 
 >>**incorrect** (string): This text becomes the new title for incorrect feedback.  
 
+>**_graphic** (object):  This `_graphic` attributes group stores the properties for when an image is added to the feedback. It contains values for **_isEnabled**, **_correct**, **correctAlt**, **_partlyCorrectNotFinal**, **partlyCorrectNotFinalAlt**, **_partlyCorrect**, **partlyCorrectAlt**, **_incorrectNotFinal**, **incorrectNotFinalAlt**, **_incorrect**, and **incorrectAlt**.  
+
+>>**_isEnabled** (boolean): If `enabled`, the specified image will be shown with the relevant feedback.  
+
+>>**_correct** (string): File name (including path) of the image for the correct feedback. Path should be relative to the *src* folder.  
+
+>>**correctAlt** (string): This text becomes the correct feedback image’s `alt` attribute.  
+
+>>**_partlyCorrectNotFinal** (string): File name (including path) of the image for the partly correct feedback when there are attempts remaining. Path should be relative to the *src* folder.  
+
+>>**partlyCorrectNotFinalAlt** (string): This text becomes the partly correct feedback image’s `alt` attribute when there are attempts remaining.  
+
+>>**_partlyCorrect** (string): File name (including path) of the image for the partly correct feedback. Path should be relative to the *src* folder.  
+
+>>**partlyCorrectAlt** (string): This text becomes the partly correct feedback image’s `alt` attribute.  
+
+>>**_incorrectNotFinal** (string): File name (including path) of the image for the incorrect feedback when there are attempts remaining. Path should be relative to the *src* folder.  
+
+>>**incorrectNotFinalAlt** (string): This text becomes the incorrect feedback image’s `alt` attribute when there are attempts remaining.  
+
+>>**_incorrect** (string): File name (including path) of the image for the incorrect feedback. Path should be relative to the *src* folder.  
+
+>>**incorrectAlt** (string): This text becomes the incorrect feedback image’s `alt` attribute.  
+
 ## Limitations
 
 This cannot be used when adapt-contrib-tutor is installed, as there are issues with adapt-contrib-trickle events, and multiple feedback popups will open.  
 
 ----------------------------
-**Version number:**  4.0.0    
+**Version number:**  4.1.0    
 **Framework versions supported:**  5+    
 **Author / maintainer:** DeltaNet with [contributors](https://github.com/deltanet/adapt-enhanced-question/graphs/contributors)     
 **Accessibility support:** Yes  

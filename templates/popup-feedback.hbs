@@ -16,9 +16,17 @@
 {{/if}}
 
 {{#if feedbackMessage}}
-<div class="notify__body">
+<div class="notify__body{{#unless graphic}} is-fullwidth{{/unless}}">
 	<div class="notify__body-inner">
 		{{{compile feedbackMessage}}}
+	</div>
+</div>
+{{/if}}
+
+{{#if graphic}}
+<div class="enhancedQuestion__popup-graphic{{#unless feedbackMessage}} is-fullwidth{{/unless}}">
+	<div class="enhancedQuestion__popup-graphic-inner">
+		<img src="{{graphic}}" {{#if graphicAlt}}aria-label="{{graphicAlt}}"{{else}}aria-hidden="true"{{/if}}/>
 	</div>
 </div>
 {{/if}}

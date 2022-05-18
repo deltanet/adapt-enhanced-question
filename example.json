@@ -30,5 +30,18 @@
 		"partlyCorrect": "That's partly right",
 		"incorrectNotFinal": "That's not right",
 		"incorrect": "That's not right"
+	},
+	"_graphic": {
+		"_isEnabled": true,
+		"_correct": "",
+		"correctAlt": "",
+		"_partlyCorrectNotFinal": "",
+		"partlyCorrectNotFinalAlt": "",
+		"_partlyCorrect": "",
+		"partlyCorrectAlt": "",
+		"_incorrectNotFinal": "",
+		"incorrectNotFinalAlt": "",
+		"_incorrect": "",
+		"incorrectAlt": ""
 	}
 },

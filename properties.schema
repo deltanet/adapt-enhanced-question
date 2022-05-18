@@ -93,7 +93,7 @@
                 "_feedbackIcons": {
                   "type":"object",
                   "required": true,
-                  "legend": "Feedback Graphics",
+                  "legend": "Feedback Header Graphics",
                   "properties":{
                     "_isEnabled": {
                       "type":"boolean",
@@ -264,6 +264,117 @@
                       "validators": [],
                       "translatable": true,
                       "help": "Incorrect title for the final attempt."
+                    }
+                  }
+                },
+                "_graphic": {
+                  "type":"object",
+                  "required": true,
+                  "legend": "Feedback Graphics",
+                  "properties":{
+                    "_isEnabled": {
+                      "type":"boolean",
+                      "required": true,
+                      "default": false,
+                      "title": "Is Enabled",
+                      "inputType": "Checkbox",
+                      "validators": [],
+                      "help": "If enabled, the graphics set below will display next to the feedback text."
+                    },
+                    "_correct": {
+                      "type":"string",
+                      "required": true,
+                      "default": "",
+                      "title": "Correct Graphic",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Select a graphic to be used for the correct feedback."
+                    },
+                    "correctAlt": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "Correct Alt text",
+                      "inputType": "Text",
+                      "validators": [],
+                      "help": "Alternative text for the correct feedback graphic.",
+                      "translatable": true
+                    },
+                    "_partlyCorrectNotFinal": {
+                      "type":"string",
+                      "required": true,
+                      "default": "",
+                      "title": "Partly Correct Not Final Graphic",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Select a graphic to be used for the partly correct feedback for any attempt apart from the last attempt."
+                    },
+                    "partlyCorrectNotFinalAlt": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "Partly Correct Not Final Alt text",
+                      "inputType": "Text",
+                      "validators": [],
+                      "help": "Alternative text for the partly correct feedback graphic for any attempt apart from the last attempt.",
+                      "translatable": true
+                    },
+                    "_partlyCorrect": {
+                      "type":"string",
+                      "required": true,
+                      "default": "",
+                      "title": "Partly correct graphic",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Select a graphic to be used for the partly correct feedback."
+                    },
+                    "partlyCorrectAlt": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "Partly Correct Alt text",
+                      "inputType": "Text",
+                      "validators": [],
+                      "help": "Alternative text for the partly correct feedback graphic.",
+                      "translatable": true
+                    },
+                    "_incorrectNotFinal": {
+                      "type":"string",
+                      "required": true,
+                      "default": "",
+                      "title": "Incorrect Not Final Graphic",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Select a graphic to be used for the incorrect feedback for any attempt apart from the last attempt."
+                    },
+                    "incorrectNotFinalAlt": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "Incorrect Not Final Alt text",
+                      "inputType": "Text",
+                      "validators": [],
+                      "help": "Alternative text for the incorrect feedback graphic for any attempt apart from the last attempt.",
+                      "translatable": true
+                    },
+                    "_incorrect": {
+                      "type":"string",
+                      "required": true,
+                      "default": "",
+                      "title": "Incorrect Graphic",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Select a graphic to be used for the incorrect feedback."
+                    },
+                    "incorrectAlt": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "Incorrect Alt text",
+                      "inputType": "Text",
+                      "validators": [],
+                      "help": "Alternative text for the incorrect feedback graphic.",
+                      "translatable": true
                     }
                   }
                 }
