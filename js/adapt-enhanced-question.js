@@ -108,7 +108,7 @@ class EnhancedQuestion extends Backbone.Controller {
     }
 
     // Check for graphic
-    if (view.model.get('_enhancedQuestion')._graphic._isEnabled) {
+    if (view.model.get('_enhancedQuestion')._graphic && view.model.get('_enhancedQuestion')._graphic._isEnabled) {
       // Correct
       if (view.model.get('_isCorrect')) {
         view.model.set('graphic', view.model.get('_enhancedQuestion')._graphic._correct);
