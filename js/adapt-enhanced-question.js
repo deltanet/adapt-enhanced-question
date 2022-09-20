@@ -1,4 +1,5 @@
 import Adapt from 'core/js/adapt';
+import notify from 'core/js/notify';
 import InlineFeedbackView from './inline-feedbackView';
 import PopupFeedbackView from './popup-feedbackView';
 
@@ -175,7 +176,7 @@ class EnhancedQuestion extends Backbone.Controller {
         model: view.model
       });
 
-      Adapt.notify.popup({
+      notify.popup({
         _view: this.popupView,
         _isCancellable: true,
         _showCloseButton: false,

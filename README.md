@@ -101,8 +101,8 @@ The Enhanced Question attribute group contains values for **_isEnabled**, **_ove
 This cannot be used when adapt-contrib-tutor is installed, as there are issues with adapt-contrib-trickle events, and multiple feedback popups will open.  
 
 ----------------------------
-**Version number:**  4.1.1    
-**Framework versions supported:**  5+    
+**Version number:**  5.0.0    
+**Framework versions supported:**  5.19.1+    
 **Author / maintainer:** DeltaNet with [contributors](https://github.com/deltanet/adapt-enhanced-question/graphs/contributors)     
 **Accessibility support:** Yes  
 **RTL support:** Yes     
